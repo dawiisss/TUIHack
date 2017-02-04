@@ -12,7 +12,18 @@ $font-path: "../assets/fonts";
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-
+.pane {
+        background: url("../assets/images/other images/holiday2.jpg") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+  .centerMain {
+    text-align: center
+  }
+  .h1 {
+    text-align: center
+  }
 
 
 // Named Color Variables
