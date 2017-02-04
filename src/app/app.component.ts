@@ -21,6 +21,7 @@ import { Profile } from '../pages/profile/profile';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  //Root page & active page highlight
   rootPage: any = Home;
   activatePage: any;
   pages: Array<{title: string, component: any}>;
@@ -28,7 +29,7 @@ export class MyApp {
   constructor(public platform: Platform) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
+    //Navigation
     this.pages = [
       { title: 'Home', component: Home },
       { title: 'My Profile', component: Profile },
