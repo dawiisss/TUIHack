@@ -2,8 +2,17 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { BookHotel } from '../pages/book_hotel/book_hotel';
+import { BookingInfo } from '../pages/booking_info/booking_info';
+import { Excursions } from '../pages/excursions/excursions';
+import { Feedback } from '../pages/feedback/feedback';
+import { FindHotelRoom } from '../pages/find_hotel_room/find_hotel_room';
+import { Home } from '../pages/home/home';
+import { LocalInfo } from '../pages/local_info/local_info';
+import { RoomService } from '../pages/room_service/room_service';
+import { Profile } from '../pages/profile/profile';
+
+
 
 
 @Component({
@@ -12,7 +21,7 @@ import { Page2 } from '../pages/page2/page2';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Page1;
+  rootPage: any = Home;
   activatePage: any;
   pages: Array<{title: string, component: any}>;
 
@@ -21,8 +30,14 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
+      { title: 'Home', component: Home },
+      { title: 'My Profile', component: Profile },
+      { title: 'Book Hotel', component: BookHotel },
+      { title: 'Find Hotel Room', component: FindHotelRoom },
+      { title: 'Room Service', component: RoomService },
+      { title: 'Local Info', component: LocalInfo },
+      { title: 'Excursions', component: Excursions },
+      { title: 'Feedback', component: Feedback },                  
     ];
     this.activatePage = this.pages[0];
   }

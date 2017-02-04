@@ -1,14 +1,36 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { BookHotel } from '../pages/book_hotel/book_hotel';
+import { BookedExcursions } from '../pages/booked_excursions/booked_excursions';
+import { BookingInfo } from '../pages/booking_info/booking_info';
+import { EditProfile } from '../pages/edit_profile/edit_profile';
+import { Excursions } from '../pages/excursions/excursions';
+import { Feedback } from '../pages/feedback/feedback';
+import { FindHotelRoom } from '../pages/find_hotel_room/find_hotel_room';
+import { Home } from '../pages/home/home';
+import { LocalInfo } from '../pages/local_info/local_info';
+import { RoomService } from '../pages/room_service/room_service';
+import { Login } from '../pages/login/login';
+import { Signup } from '../pages/signup/signup';
+import { Profile } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
-    Page2
+    BookHotel,
+    BookedExcursions,
+    BookingInfo,
+    EditProfile,
+    Excursions,
+    Feedback,        
+    FindHotelRoom,
+    Home,
+    LocalInfo,
+    RoomService,
+    Login,
+    Signup,
+    Profile
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -16,8 +38,19 @@ import { Page2 } from '../pages/page2/page2';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
-    Page2
+    BookHotel,
+    BookedExcursions,
+    BookingInfo,
+    EditProfile,
+    Excursions,
+    Feedback,        
+    FindHotelRoom,
+    Home,
+    LocalInfo,
+    RoomService,
+    Login,
+    Signup,
+    Profile
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
