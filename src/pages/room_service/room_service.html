@@ -8,8 +8,74 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    
-  </ion-list>
-  
+  <div padding>
+    <ion-segment [(ngModel)]="Meals">
+      <ion-segment-button value="Breakfast">
+        Breakfast
+      </ion-segment-button>
+      <ion-segment-button value="Lunch">
+        Lunch
+      </ion-segment-button>
+      <ion-segment-button value="Snacks">
+        Snacks
+      </ion-segment-button>
+      <ion-segment-button value="Drinks">
+        Drinks
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="Meals">
+    <ion-list *ngSwitchCase="'Breakfast'">
+      <ion-list>
+        <button ion-item>Full English</button> 
+        <button ion-item>Cereal and milk</button> 
+        <button ion-item>Beans on toast</button>
+        <button ion-item>Whole Fruit</button>
+        <button ion-item>Fresh Fruit and Yoghurt</button>
+        <button ion-item>Sandwiches</button>
+        <button ion-item>Bagels</button>
+      </ion-list>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Lunch'">
+      <ion-list>
+        <button ion-item>Pizzas</button> 
+        <button ion-item>Soups and Salads</button> 
+        <button ion-item>Fried Chicken</button>
+        <button ion-item>Flame Grilled Chicken</button>
+        <button ion-item>Fish Fillet with Chips</button>
+        <button ion-item>Sandwiches</button>
+        <button ion-item>Thai Noodles</button>
+      </ion-list>
+    </ion-list>
+
+     <ion-list *ngSwitchCase="'Snacks'">
+      <ion-list>
+        <button ion-item>Biscuits</button> 
+        <button ion-item>Chocolate Bars</button> 
+        <button ion-item>Granola Bars</button>
+        <button ion-item>Crisps</button>
+        <button ion-item>Sliced Fruits</button>
+        <button ion-item>Sandwiches</button>
+        <button ion-item>Nuts</button>
+      </ion-list>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Drinks'">
+      <ion-list>
+        <button ion-item>J2O</button> 
+        <button ion-item>Sprite</button> 
+        <button ion-item>Fanta</button>
+        <button ion-item>Schweppes</button>
+        <button ion-item>Cola</button>
+        <button ion-item>Brandy</button>
+        <button ion-item>Scotch</button>
+        <button ion-item>Bacardi</button>
+        <button ion-item>Water</button>
+      </ion-list>
+    </ion-list>
+  </div>
 </ion-content>
+
+
