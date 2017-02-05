@@ -3,14 +3,25 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Local info</ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
-    <ion-title>Local Info</ion-title>
+    <ion-title>My Profile</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div #map id="map"></div>  
- <div #map id="map"></div>  
+<ion-content class="pane">
+
+  <ion-card>
+    <ion-card-content>
+        <ion-item>
+    <ion-thumbnail item-left>
+      <img src="../assets/images/otherImages/Godfrey.jpg">
+    </ion-thumbnail>
+    <h2>Godfrey Enang</h2>
+    <p>Tourist</p>
+  </ion-item>
+      <button ion-button block>Edit Profile</button>
+      <button ion-button block>My Booking info</button>
+      <button ion-button block>Booked Excursions</button>
+      <button ion-button block>Log Out</button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
