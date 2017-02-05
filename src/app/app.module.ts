@@ -14,6 +14,7 @@ import { RoomService } from '../pages/room_service/room_service';
 import { Login } from '../pages/login/login';
 import { Signup } from '../pages/signup/signup';
 import { Profile } from '../pages/profile/profile';
+import { AuthProvider } from '../providers/AuthProvider';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,6 @@ import { Profile } from '../pages/profile/profile';
     Signup,
     Profile
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AuthProvider, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
