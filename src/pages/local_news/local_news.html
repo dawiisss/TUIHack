@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Local News</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="pane">
+  <ion-card *ngFor="let entry of entries">
+        <ion-card-header>
+            <ion-item class="no-padding" text-wrap><h2><strong>{{entry.title}}</strong></h2></ion-item>
+           <!-- <ion-note>Posted {{entry.publishedDate}}</ion-note>-->
+        </ion-card-header>
+        <ion-card-content>
+          <!--<img src="{{entry.media:content}}" />-->
+      <div class="desc" [innerHTML]="entry.description"></div>
+    </ion-card-content>
+    <ion-row>
+    <ion-col right text-right>
+        <button (click)="launch(entry.link)" ion-button clear small>
+          Read more..
+        </button>
+      </ion-col>
+    </ion-row>
+    </ion-card>
+</ion-content>

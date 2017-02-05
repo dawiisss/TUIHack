@@ -8,12 +8,13 @@ import { EditProfile } from '../pages/edit_profile/edit_profile';
 import { Excursions } from '../pages/excursions/excursions';
 import { Feedback } from '../pages/feedback/feedback';
 import { Home } from '../pages/home/home';
-import { LocalInfo } from '../pages/local_info/local_info';
+import { LocalNews } from '../pages/local_news/local_news';
 import { RoomService } from '../pages/room_service/room_service';
 import { Login } from '../pages/login/login';
 import { Signup } from '../pages/signup/signup';
 import { Profile } from '../pages/profile/profile';
 import { AuthProvider } from '../providers/AuthProvider';
+import { QRCode } from '../pages/qrcode/qrcode';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,11 @@ import { AuthProvider } from '../providers/AuthProvider';
     Excursions,
     Feedback,        
     Home,
-    LocalInfo,
+    LocalNews,
     RoomService,
     Login,
     Signup,
+    QRCode,
     Profile
   ],
   imports: [
@@ -44,10 +46,11 @@ import { AuthProvider } from '../providers/AuthProvider';
     Excursions,
     Feedback,        
     Home,
-    LocalInfo,
+    LocalNews,
     RoomService,
     Login,
     Signup,
+    QRCode,
     Profile
   ],
   providers: [AuthProvider, {provide: ErrorHandler, useClass: IonicErrorHandler}]

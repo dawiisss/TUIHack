@@ -9,29 +9,21 @@
 
 <ion-content>
   
-
-  <ion-list>
   <br>
-    <ion-item>
-      <ion-label floating>Subject</ion-label>
-      <ion-input [(ngModel)]="subject" type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-textarea [(ngModel)]="description"></ion-textarea>
-    </ion-item>
-
-<br>
-
-<ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit"  (click)="submit()" >Submit</button>
-        </ion-col>
-      </ion-row>
+    <form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Subject</ion-label>
+        <ion-input type="text" [(ngModel)]="subject" name="subject"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-input type="text" [(ngModel)]="description" name="description"></ion-input>
+      </ion-item>         
+      <br>
+      <button ion-button type="submit" block>Send Feedback</button>
+    </form>
     
 
 
-</ion-list>
 
 </ion-content>

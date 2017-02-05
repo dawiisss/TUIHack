@@ -8,9 +8,10 @@ import { Excursions } from '../pages/excursions/excursions';
 import { Feedback } from '../pages/feedback/feedback';
 import { Home } from '../pages/home/home';
 import { Login } from '../pages/login/login';
-import { LocalInfo } from '../pages/local_info/local_info';
+import { LocalNews } from '../pages/local_news/local_news';
 import { RoomService } from '../pages/room_service/room_service';
 import { Profile } from '../pages/profile/profile';
+import { QRCode } from '../pages/qrcode/qrcode';
 
 
 
@@ -27,6 +28,8 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform) {
+    //localStorage.removeItem("name"); 
+    //localStorage.removeItem("email");  
     this.initializeApp();
 
     //Navigation
@@ -35,9 +38,11 @@ export class MyApp {
       { title: 'My Profile', component: Profile },
       { title: 'Book Hotel', component: BookHotel },
       { title: 'Room Service', component: RoomService },
-      { title: 'Local Info', component: LocalInfo },
+      { title: 'Local News', component: LocalNews },
       { title: 'Excursions', component: Excursions },
-      { title: 'Feedback', component: Feedback },                  
+      { title: 'Feedback', component: Feedback },  
+      { title: 'QR Check-in', component: QRCode },  
+                     
     ];
     this.activatePage = this.pages[0];
   }

@@ -40,7 +40,7 @@ export class AuthProvider {
         console.log(res.json());
         this.data = res.json();
         this.email = this.data.email;
-        this.name = this.data.firstname;
+        this.name = this.data.firstname;      
         console.log(this.name);
         console.log(this.email);
         localStorage.setItem("name", this.name)

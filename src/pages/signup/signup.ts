@@ -8,7 +8,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 })
 export class Signup {
   createSuccess = false;
-  registerCredentials = {email: '', password: '',firstname: '',lastname: '', addressline1: '', addressline2: '',postcode: '',phonenumber:''};
+  registerCredentials = {email: '', password: '',firstname: '',lastname: '', addressline1: '', addressline2: '',postcode: '',phonenumber:'',usertype:'user'};
   selectedItem: any;
 
   constructor(public alertCtrl: AlertController,public auth: AuthProvider,public navCtrl: NavController, public navParams: NavParams) {
