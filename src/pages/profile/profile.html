@@ -15,13 +15,13 @@
     <ion-thumbnail item-left>
       <img src="../assets/images/otherImages/Godfrey.jpg">
     </ion-thumbnail>
-    <h2>Godfrey Enang</h2>
+    <h2>{{username}}</h2>
     <p>Tourist</p>
   </ion-item>
       <button ion-button block>Edit Profile</button>
       <button ion-button block>My Booking info</button>
       <button ion-button block>Booked Excursions</button>
-      <button ion-button block>Log Out</button>
+      <button ion-button block (click)="logout()">Log Out</button>
     </ion-card-content>
   </ion-card>
 </ion-content>

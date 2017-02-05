@@ -6,7 +6,6 @@ import { BookHotel } from '../pages/book_hotel/book_hotel';
 import { BookingInfo } from '../pages/booking_info/booking_info';
 import { Excursions } from '../pages/excursions/excursions';
 import { Feedback } from '../pages/feedback/feedback';
-import { FindHotelRoom } from '../pages/find_hotel_room/find_hotel_room';
 import { Home } from '../pages/home/home';
 import { Login } from '../pages/login/login';
 import { LocalInfo } from '../pages/local_info/local_info';
@@ -35,7 +34,6 @@ export class MyApp {
       { title: 'Home', component: Home },
       { title: 'My Profile', component: Profile },
       { title: 'Book Hotel', component: BookHotel },
-      { title: 'Find Hotel Room', component: FindHotelRoom },
       { title: 'Room Service', component: RoomService },
       { title: 'Local Info', component: LocalInfo },
       { title: 'Excursions', component: Excursions },
