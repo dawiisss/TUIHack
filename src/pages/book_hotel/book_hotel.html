@@ -8,5 +8,59 @@
 </ion-header>
 
 <ion-content>
-  
+  <ion-card>
+  <ion-item>
+    <ion-label floating>Destination</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>  
+<ion-item>
+  <ion-label>Check-in Date</ion-label>
+  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="checkinDate"></ion-datetime>
+</ion-item>
+
+<ion-item>
+  <ion-label>Check-out Date</ion-label>
+  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="checkoutDate"></ion-datetime>
+</ion-item>  
+  <ion-item>
+    <ion-label>Rooms</ion-label>
+    <ion-select [(ngModel)]="rooms">
+      <ion-option value="1">1</ion-option>
+      <ion-option value="2">2</ion-option>
+      <ion-option value="3">3</ion-option>
+      <ion-option value="4">4</ion-option>
+      <ion-option value="5">5</ion-option>
+      <ion-option value="6">6</ion-option>
+    </ion-select>
+  </ion-item>
+
+    <ion-item>
+    <ion-label>Adults</ion-label>
+    <ion-select [(ngModel)]="adults">
+      <ion-option value="1">1</ion-option>
+      <ion-option value="2">3</ion-option>
+      <ion-option value="4">5</ion-option>
+      <ion-option value="6">6</ion-option>
+      <ion-option value="7">7</ion-option>
+      <ion-option value="8">8</ion-option>
+    </ion-select>
+  </ion-item>
+
+
+    <ion-item>
+    <ion-label>Children</ion-label>
+    <ion-select [(ngModel)]="children">
+      <ion-option value="1">1</ion-option>
+      <ion-option value="2">2</ion-option>
+      <ion-option value="3">4</ion-option>
+      <ion-option value="5">5</ion-option>
+      <ion-option value="6">6</ion-option>
+      <ion-option value="7">7</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button ion-button block >Book a Room</button>
+
+  </ion-card>
+
 </ion-content>

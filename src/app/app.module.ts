@@ -7,7 +7,6 @@ import { BookingInfo } from '../pages/booking_info/booking_info';
 import { EditProfile } from '../pages/edit_profile/edit_profile';
 import { Excursions } from '../pages/excursions/excursions';
 import { Feedback } from '../pages/feedback/feedback';
-import { FindHotelRoom } from '../pages/find_hotel_room/find_hotel_room';
 import { Home } from '../pages/home/home';
 import { LocalInfo } from '../pages/local_info/local_info';
 import { RoomService } from '../pages/room_service/room_service';
@@ -25,7 +24,6 @@ import { AuthProvider } from '../providers/AuthProvider';
     EditProfile,
     Excursions,
     Feedback,        
-    FindHotelRoom,
     Home,
     LocalInfo,
     RoomService,
@@ -45,7 +43,6 @@ import { AuthProvider } from '../providers/AuthProvider';
     EditProfile,
     Excursions,
     Feedback,        
-    FindHotelRoom,
     Home,
     LocalInfo,
     RoomService,
