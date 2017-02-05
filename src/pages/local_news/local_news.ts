@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
-
+import { LocalNewsProvider } from '../../providers/localnewsProvider';
 import { NavController, NavParams } from 'ionic-angular';
+import { InAppBrowser } from 'ionic-native';
 
 @Component({
-  selector: 'page-localinfo',
-  templateUrl: 'local_info.html'
+  selector: 'page-localnews',
+  templateUrl: 'local_news.html',
+  providers: [LocalNewsProvider]
 })
-export class LocalInfo {
+export class LocalNews {
   selectedItem: any;
   icons: string[];
+  public entries: any  = []; /* this needs to be class level variable */
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public LocalNewsProvider: LocalNewsProvider ,public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -28,10 +31,20 @@ export class LocalInfo {
       });
     }
   }
+    ionViewDidLoad(){
+    this.LocalNewsProvider.load().subscribe(
+          data => {
+              this.entries.push(data); /* push retrieved data into the array */
+          }
+      );
+    }
+
+ public openArticle(url: string) {
+  }
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(LocalInfo, {
+    this.navCtrl.push(LocalNews, {
       item: item
     });
   }

@@ -30,15 +30,14 @@ export class feedbackProvider {
  
   }
  
-  createfeedback(feedback){
+  addFeedback(feedback){
  
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
  
-    this.http.post('http://178.62.44.124:27027/api/feedback', JSON.stringify(feedback), {headers: headers})
+    this.http.post('http://178.62.44.124:8080/api/feedback', JSON.stringify(feedback), {headers: headers})
       .subscribe(res => {
         console.log(res.json());
       });
- 
   }
   }

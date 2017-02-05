@@ -16,6 +16,7 @@ export class Home {
     let info = this.auth.getUserInfo();
     this.username = info.name;
     this.email = info.email;
+
   }
 
   goToBookings(){

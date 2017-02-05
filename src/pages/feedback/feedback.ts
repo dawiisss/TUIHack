@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController,ModalController } from 'ionic-angular';
+import { NavController,ModalController, ToastController } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import { feedbackProvider } from '../../providers/feedbackProvider';
 
@@ -14,31 +14,40 @@ export class Feedback
 subject: any;
 description:any;
 feedback:any;
+name: any;
+email: any;
+date: any;
 
- constructor(public viewCtrl: ViewController, public nav: NavController, public reviewService: feedbackProvider, public modalCtrl: ModalController) {
+ constructor(public toastCtrl: ToastController,public viewCtrl: ViewController, public nav: NavController, public feedbackProvider: feedbackProvider, public modalCtrl: ModalController) {
 }
 ionViewDidLoad(){
  
-    this.reviewService.getfeedbacks().then((data) => {
+    this.feedbackProvider.getfeedbacks().then((data) => {
       console.log(data);
       this.feedback = data;
     });
  
   }
  
-  addfeedback(){
- 
-    let modal = this.modalCtrl.create(Feedback);
- 
-    modal.onDidDismiss(feedback => {
-      if(feedback){
-        this.feedback.push(feedback);
-        this.feedback.createReview(feedback);        
-      }
-    });
- 
-    modal.present();
- 
+  logForm() {
+        let feedbackMain = {
+      subject: this.subject,
+      description: this.description,
+      date: new Date().toLocaleString(),
+      user: localStorage.getItem("email")
+
+    };
+    console.log(feedbackMain);
+        if(feedbackMain){
+          //this.reviews.push(review);
+          this.feedbackProvider.addFeedback(feedbackMain);
+          let toast = this.toastCtrl.create({
+            message: 'Feedback has been sent! Thank you',
+            duration: 3000
+          });
+          toast.present();
+            };
+        
   }
  
   deleteReview(feedback){
