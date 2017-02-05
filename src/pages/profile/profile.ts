@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthProvider } from '../../providers/AuthProvider';
 import { NavController, NavParams } from 'ionic-angular';
 import { Login } from '../login/login'
+import { EditProfile } from '../edit_profile/edit_profile'
 
 @Component({
   selector: 'page-profile',
@@ -46,5 +47,13 @@ export class Profile {
         this.navCtrl.setRoot(Login)
     });
   }
-
+  public edit_profile() {
+    
+        this.navCtrl.push(EditProfile);
+      }
 }
+
+    
+  
+
+
