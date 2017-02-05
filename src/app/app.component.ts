@@ -8,6 +8,7 @@ import { Excursions } from '../pages/excursions/excursions';
 import { Feedback } from '../pages/feedback/feedback';
 import { FindHotelRoom } from '../pages/find_hotel_room/find_hotel_room';
 import { Home } from '../pages/home/home';
+import { Login } from '../pages/login/login';
 import { LocalInfo } from '../pages/local_info/local_info';
 import { RoomService } from '../pages/room_service/room_service';
 import { Profile } from '../pages/profile/profile';
@@ -22,7 +23,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   //Root page & active page highlight
-  rootPage: any = Home;
+  rootPage: any = Login;
   activatePage: any;
   pages: Array<{title: string, component: any}>;
 

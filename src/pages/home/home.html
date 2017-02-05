@@ -11,7 +11,9 @@
 <ion-content padding class="pane">
   <ion-card>
     <ion-card-header>
-      Your personal travel assisstant!
+      <h3>Holiday Assisstant</h3>
+        <p>Welcome {{username}}!</p>
+        <p>Your Email is: {{email}}</p>
     </ion-card-header>
     <img src="../assets/images/otherImages/hol2.jpg"/>
   </ion-card>
@@ -20,4 +22,9 @@
   </p>
 
   <button ion-button block (click)="goToLogin()">Make a booking</button>
+  <ion-buttons end>
+  <button ion-button (click)="logout()">
+  <ion-icon name="log-out"></ion-icon>
+  </button>    </ion-buttons>
+
 </ion-content>

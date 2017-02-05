@@ -8,5 +8,57 @@
 </ion-header>
 
 <ion-content>
+  <br>
+  <ion-card>
+  <div class="login-box">
+    
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="First Name" name="firstname" [(ngModel)]="registerCredentials.firstname" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Last Name" name="lastname" [(ngModel)]="registerCredentials.lastname" required></ion-input>
+            </ion-item>
+
+             <ion-item>
+              <ion-input type="text" placeholder="Address Line 1" name="addressline1" [(ngModel)]="registerCredentials.addressline1" required></ion-input>
+            </ion-item> 
+
+            <ion-item>
+              <ion-input type="text" placeholder="Address Line 2" name="addressline2" [(ngModel)]="registerCredentials.addressline2" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Post Code" name="postcode" [(ngModel)]="registerCredentials.postcode" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" placeholder="Phone Number" name="phonenumber" [(ngModel)]="registerCredentials.phonenumber" required></ion-input>
+            </ion-item>              
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+  </div>
+  </ion-card>
 
 </ion-content>

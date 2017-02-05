@@ -1,0 +1,261 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>HOTEL</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"  />
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+<style>
+  body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+         background-image: url("holiday2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    width:100% ;
+
+  }
+  h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }  
+
+
+  .container-fluid {
+      padding: 60px 50px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .logo-small {
+      color: #f4511e;
+      font-size: 50px;
+  }
+  .logo {
+      color: #f4511e;
+      font-size: 200px;
+  }
+  
+  
+  .navbar {
+      margin-bottom: 0;
+      background-color:#ff0000;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #ff0000 !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+
+  .slideanim {visibility:hidden;}
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+}
+
+.panel {
+    border: 1px solid #00BFFF; 
+    border-radius:0;
+    transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel-footer .btn:hover {
+    border: 1px solid #ff0000;
+    background-color: #fff !important;
+    color: #00BFFF;
+}
+
+.panel-heading {
+    color: #fff !important;
+    background-color: #00BFFF !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel-footer {
+    background-color: #fff !important;
+}
+
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: #ff0000;
+    color: #fff;
+}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="home.html">HOLIDAY ASSISTANT</a>
+    </div>
+     <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">MANAGE HOTELS</a></li>
+      <li><a href="#">MANAGE ADMINS</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+            <button type="button" class="btn btn-success btn-block"  data-toggle="modal" data-target="#ADDHOTEL">ADD HOTEL</button><br>
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            
+            <div class="panel status panel-success">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">NAME OF HOTEL FROM DATABASE</h1>
+                </div>
+                <div class="panel-body text-center">                        
+                    <strong>GET IMAGE FROM THE DATABASE</strong>
+                </div>
+                 <div class="panel-footer text-center">     
+                      <button class="btn btn-lg">Edit</button>  
+                      <button class="btn btn-lg">Delete</button>                  
+                    
+                </div>
+            </div>
+        </div>          
+        <div class="col-xs-6 col-md-3">
+            
+            <div class="panel status panel-success">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">NAME OF HOTEL FROM DATABASE</h1>
+                </div>
+                <div class="panel-body text-center">                        
+                    <strong>GET IMAGE FROM THE DATABASE</strong>
+                </div>
+
+                <div class="panel-footer text-center">     
+                      <button class="btn btn-lg">Edit</button>  
+                      <button class="btn btn-lg">Delete</button>                  
+                    
+                </div>
+            </div>
+
+        </div>   
+        <div class="col-xs-6 col-md-3">
+            
+            <div class="panel status panel-success">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">NAME OF HOTEL FROM DATABASE</h1>
+                </div>
+                <div class="panel-body text-center">                        
+                    <strong>GET IMAGE FROM THE DATABASE</strong>
+                </div>
+                <div class="panel-footer text-center">     
+                      <button class="btn btn-lg">Edit</button>  
+                      <button class="btn btn-lg">Delete</button>                  
+                    
+                </div>
+            </div>
+
+        </div>   
+        <div class="col-xs-6 col-md-3">
+            
+            <div class="panel status panel-success">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">NAME OF HOTEL FROM DATABASE</h1>
+                </div>
+                <div class="panel-body text-center">                        
+                    <strong>GET IMAGE FROM THE DATABASE</strong>
+                </div>
+                <div class="panel-footer text-center">     
+                      <button class="btn btn-lg">Edit</button>  
+                      <button class="btn btn-lg">Delete</button>                  
+                    
+                </div>
+            </div>
+
+        </div>   
+    </div>
+
+
+</div>
+
+</body>
+
+
+</html>
