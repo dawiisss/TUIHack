@@ -1,0 +1,54 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>HOTEL</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"  />
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+<body>
+
+    
+  <form class="inputs", action="login", method="post" >
+   
+      <input type="email"  name="email" id="email" placeholder="email">
+
+      <input type="password"  name="pass" id="pwd" placeholder="password">
+
+    <button type = "submit" class="btn btn-primary btn-block" name="btn-login" >Login</button>
+  </form>
+
+</body>
+
+<script>
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://admin:Sigma123@178.62.44.124:27027/travel');
+var db = mongoose.connection;
+
+db.on('error', console.error);
+db.once('open', function() {
+    
+	var userSchema = new Schema({
+    email: String
+});
+
+var User = mongoose.model('User', userSchema);
+
+app.post('/login', function(request, response){
+    var u = new User({
+        email: request.body.name
+		password: request.body.name
+    });
+
+    u.save(function(err) {
+        if (err)
+           throw err;
+        else 
+           console.log('save user successfully...');
+    });
+	
+});
+</script>
+</html>

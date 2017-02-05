@@ -1,0 +1,371 @@
+.breadcrumb{background-color:#53af4e;padding:0;border-radius:0;margin-bottom:0}
+.breadcrumb>li+li:before{content:" ";padding:0}
+.breadcrumb li:first-child a{border-left:0;padding-left:100px;font-size:16px}
+.breadcrumb li:first-child a:after{content:"\f015";display:inline-block;font-family:"FontAwesome"}
+.breadcrumb li{display:inline-block}
+.breadcrumb li a{text-decoration:none;display:inline-block;border-left:1px solid white;font-size:16px;padding:10px 20px;color:#fff}
+.breadcrumb li a{font-family:fs_lolaregular}
+.breadcrumb li a:lang(zh){font-family:"Hiragino Sans GB W3, SimHei"}
+.breadcrumb li a:lang(iw){font-family:museum_regular}
+.breadcrumb li a:lang(ja){font-family:"Hiragino Kaku Gothic Pro W3, Meiryo"}
+@media(min-width:320px) and (max-width:767px){.breadcrumb{float:none;width:100%;display:block;overflow:hidden;clear:both}
+.breadcrumb li:first-child a{font-size:1.6rem;padding-left:26px}
+.breadcrumb li:nth-of-type(1){width:58px;float:left}
+.breadcrumb li:nth-of-type(1) a{font-size:1.6rem;padding:10px 15px}
+.breadcrumb li:nth-of-type(2){display:block}
+.breadcrumb li:nth-of-type(2) a{font-size:1.6rem;padding:10px 15px}
+.breadcrumb li:nth-of-type(3){display:block;margin-left:58px}
+.breadcrumb li:nth-of-type(3) a{font-size:1.6rem;padding-left:15px}
+}
+@font-face{font-family:'fs_lolaregular-bold';src:url("../common/global/fonts/hifob-default/FS Lola-Bold-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-Bold-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-Bold-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-Bold-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-Bold-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-Bold-webfont.svg#fs_lolaregular") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolaitalic';src:url("../common/global/fonts/hifob-default/FS Lola-BoldItalic-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-BoldItalic-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-BoldItalic-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-BoldItalic-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-BoldItalic-webfont.svg#fs_lolaitalic") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolaextrabold';src:url("../common/global/fonts/hifob-default/FS Lola-ExtraBold-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-ExtraBold-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-ExtraBold-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-ExtraBold-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-ExtraBold-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-ExtraBold-webfont.svg#fs_lolaextrabold") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolaextrabold_italic';src:url("../common/global/fonts/hifob-default/FS Lola-ExtraBoldItalic-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-ExtraBoldItalic-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-ExtraBoldItalic-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-ExtraBoldItalic-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-ExtraBoldItalic-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-ExtraBoldItalic-webfont.svg#fs_lolaextrabold_italic") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolaitalic';src:url("../common/global/fonts/hifob-default/FS Lola-Italic-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-Italic-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-Italic-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-Italic-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-Italic-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-Italic-webfont.svg#fs_lolaitalic") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolalight';src:url("../common/global/fonts/hifob-default/FS Lola-Light-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-Light-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-Light-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-Light-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-Light-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-Light-webfont.svg#fs_lolalight") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolalight_italic';src:url("../common/global/fonts/hifob-default/FS Lola-LightItalic-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-LightItalic-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-LightItalic-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-LightItalic-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-LightItalic-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-LightItalic-webfont.svg#fs_lolalight_italic") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolamedium';src:url("../common/global/fonts/hifob-default/FS Lola-Medium-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-Medium-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-Medium-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-Medium-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-Medium-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-Medium-webfont.svg#fs_lolamedium") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolamedium_italic';src:url("../common/global/fonts/hifob-default/FS Lola-MediumItalic-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-MediumItalic-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-MediumItalic-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-MediumItalic-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-MediumItalic-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-MediumItalic-webfont.svg#fs_lolamedium_italic") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'fs_lolaregular';src:url("../common/global/fonts/hifob-default/FS Lola-Regular-webfont.eot");src:url("../common/global/fonts/hifob-default/FS Lola-Regular-webfont.eot?#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-default/FS Lola-Regular-webfont.woff2") format("woff2"),url("../common/global/fonts/hifob-default/FS Lola-Regular-webfont.woff") format("woff"),url("../common/global/fonts/hifob-default/FS Lola-Regular-webfont.ttf") format("truetype"),url("../common/global/fonts/hifob-default/FS Lola-Regular-webfont.svg#fs_lolaregular") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'icomoon';src:url("../common/global/fonts/hifob-icons/icomoon.eot?-vfcqo2");src:url("../common/global/fonts/hifob-icons/icomoon.eot?#iefix-vfcqo2") format("embedded-opentype"),url("../common/global/fonts/hifob-icons/icomoon.woff?-vfcqo2") format("woff"),url("../common/global/fonts/hifob-icons/icomoon.ttf?-vfcqo2") format("truetype"),url("../common/global/fonts/hifob-icons/icomoon.svg?-vfcqo2#icomoon") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'IHG_weather_icons';src:url("../common/global/fonts/hifob-icons/IHG-weather-icons.eot?-vfcqo2");src:url("../common/global/fonts/hifob-icons/IHG-weather-icons.eot?#iefix-vfcqo2") format("embedded-opentype"),url("../common/global/fonts/hifob-icons/IHG-weather-icons.woff?-vfcqo2") format("woff"),url("../common/global/fonts/hifob-icons/IHG-weather-icons.ttf?-vfcqo2") format("truetype"),url("../common/global/fonts/hifob-icons/IHG-weather-icons.svg?-vfcqo2#icomoon") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:'museum_bold';font-weight:900;font-style:normal;src:url("../common/global/fonts/hifob-hebrew/museum-aaa-900.eot");src:url("../common/global/fonts/hifob-hebrew/museum-aaa-900.eot#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-bold.otf") format("opentype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-900.woff") format("woff"),url("../common/global/fonts/hifob-hebrew/museum-aaa-900.ttf") format("truetype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-900.svg#museum_bold") format("svg")}
+@font-face{font-family:'museum_medium';font-weight:700;font-style:normal;src:url("../common/global/fonts/hifob-hebrew/museum-aaa-700.eot");src:url("../common/global/fonts/hifob-hebrew/museum-aaa-700.eot#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-black.otf") format("opentype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-700.woff") format("woff"),url("../common/global/fonts/hifob-hebrew/museum-aaa-700.ttf") format("truetype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-700.svg#museum_medium") format("svg")}
+@font-face{font-family:'museum_light';font-weight:300;font-style:normal;src:url("../common/global/fonts/hifob-hebrew/museum-aaa-300.eot");src:url("../common/global/fonts/hifob-hebrew/museum-aaa-300.eot#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-light.otf") format("opentype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-300.woff") format("woff"),url("../common/global/fonts/hifob-hebrew/museum-aaa-300.ttf") format("truetype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-300.svg#museum_light") format("svg")}
+@font-face{font-family:'museum_regular';font-weight:400;font-style:normal;src:url("../common/global/fonts/hifob-hebrew/museum-aaa-400.eot");src:url("../common/global/fonts/hifob-hebrew/museum-aaa-400.eot#iefix") format("embedded-opentype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-regular.otf") format("opentype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-400.woff") format("woff"),url("../common/global/fonts/hifob-hebrew/museum-aaa-400.ttf") format("truetype"),url("../common/global/fonts/hifob-hebrew/museum-aaa-400.svg#museum_regular") format("svg")}
+[class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-feature-settings:"liga";-moz-font-feature-settings:"liga=1";-moz-font-feature-settings:"liga";-ms-font-feature-settings:"liga" 1;-o-font-feature-settings:"liga";font-feature-settings:"liga";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.homepage-title{position:absolute;text-indent:-9999px}
+img{max-width:100%;vertical-align:middle}
+.tile-image img{width:100%;object-fit:cover}
+body{max-width:1440px;margin:0 auto}
+body{font-family:Arial}
+body:lang(zh){font-family:"Hiragino Sans GB W3, SimHei"}
+body:lang(iw){font-family:museum_regular}
+body:lang(ja){font-family:"Hiragino Kaku Gothic Pro W3, Meiryo"}
+#applicationWrapper{max-width:1440px;margin:0 auto}
+.global-wrapper{max-width:960px;margin:0 auto}
+.content-wrapper{width:88%;margin:0 auto;box-sizing:border-box;display:block;overflow:hidden;clear:both}
+.res-hidden{display:none}
+.res-footer{display:none}
+.res-footer .starting-price-wrap{display:none}
+.bv-curations-cleanslate.bv-carousel-wrapper{margin-top:30px !important;margin-bottom:35px !important}
+.htl-reviews-comp{padding-top:60px;border-top:1px solid #b7b7b7}
+.hi-hd-hidden-slide{position:absolute;width:auto;z-index:-999999;left:0;bottom:0}
+.vjs-default-skin .vjs-big-play-button{z-index:1 !important}
+.vjs-default-skin .vjs-control-bar{z-index:100}
+.reset-col-pad [class^="col-xs-"],.reset-col-pad [class^="col-sm-"],.reset-col-pad [class^="col-md-"],.reset-col-pad [class^="col-lg-"]{padding:0}
+sup{font-size:30%;top:-1.5em}
+html{font-size:10px}
+.background-grey{background-color:#e0e1e2}
+.background-white{background-color:#fff}
+.background-green{background-color:#509e2f}
+.background-light-green{background-color:#c4d600}
+@media(min-width:768px){.span-out-styles .tile-image{overflow:hidden}
+.span-out-styles .tile-image img{max-width:none !important}
+}
+@media screen and (min-width:768px){html{font-size:10px}
+.span-out-styles .tile-image{overflow:hidden}
+.span-out-styles .tile-image img{max-width:none !important}
+}
+@media screen and (min-width:320px) and (max-width:767px){html{font-size:10px}
+}
+@media(min-width:320px) and (max-width:767px){.content-wrapper{padding-left:0;padding-right:0;width:100%}
+.htl-reviews-comp{padding-top:40px;border-top:0}
+.bv-curations-cleanslate.bv-carousel-wrapper{margin-top:15px !important;margin-bottom:20px !important}
+}
+@media(max-width:959px){.res-footer{color:#fff;width:100%;clear:left;cursor:pointer;position:fixed;bottom:0;z-index:99;background-color:#509e2f;font-size:1.4rem}
+.res-footer .starting-price-wrap{border-right:2px solid #fff}
+.res-footer .starting-price-wrap .tile-header{display:inline-block}
+.res-footer .starting-price-wrap .desc{display:inline-block}
+.res-footer .starting-price-wrap .hi-hd-info-price{position:relative;top:50%;transform:translateY(-50%)}
+.res-footer .reservation_sticky{width:100%;padding:18px 0}
+.res-footer .starting-price-wrap,.res-footer .reservation_sticky{float:left;text-align:center;height:50px;background-color:#509e2f}
+}
+@media(min-width:768px) and (max-width:959px){.res-footer{font-size:1.8rem}
+}
+.popover-content{word-wrap:break-word}
+.stars_rating .rating-static{display:block;background-image:url("//ihg.scene7.com/is/image/ihg/hi_ratings_stars?fmt=png-alpha");background-repeat:no-repeat;background-size:59.8rem 32.4rem}
+.stars_rating .rating-50{background-position:0 -30rem}
+.stars_rating .rating-40{background-position:-2.9rem -30rem}
+.stars_rating .rating-30{background-position:-5.8rem -30rem}
+.stars_rating .rating-20{background-position:-8.7rem -30rem}
+.stars_rating .rating-10{background-position:-11.6rem -30rem}
+.stars_rating .rating-0{background-position:-14.4rem -30rem}
+.stars_rating .rating-1{background-position:-11.6rem -30rem}
+.stars_rating .rating-11{background-position:-8.7rem -15.1rem}
+.stars_rating .rating-21{background-position:-5.8rem -15.1rem}
+.stars_rating .rating-31{background-position:-2.9rem -15.1rem}
+.stars_rating .rating-41{background-position:0 -15.1rem}
+.stars_rating .rating-2{background-position:-8.7rem -30rem}
+.stars_rating .rating-12{background-position:-8.7rem -12.1rem}
+.stars_rating .rating-22{background-position:-5.8rem -12.1rem}
+.stars_rating .rating-32{background-position:-2.9rem -12.1rem}
+.stars_rating .rating-42{background-position:0 -12.1rem}
+.stars_rating .rating-3{background-position:-5.8rem -30rem}
+.stars_rating .rating-13{background-position:-8.7rem -9.1rem}
+.stars_rating .rating-23{background-position:-5.8rem -9.1rem}
+.stars_rating .rating-33{background-position:-2.9rem -9.1rem}
+.stars_rating .rating-43{background-position:0 -9.1rem}
+.stars_rating .rating-4{background-position:-2.9rem -30rem}
+.stars_rating .rating-14{background-position:-8.7rem -6.1rem}
+.stars_rating .rating-24{background-position:-5.8rem -6.1rem}
+.stars_rating .rating-34{background-position:-2.9rem -6.1rem}
+.stars_rating .rating-44{background-position:0 -6.1rem}
+.stars_rating .rating-5{background-position:0 -30rem}
+.stars_rating .rating-15{background-position:-8.7rem -3.1rem}
+.stars_rating .rating-25{background-position:-5.8rem -3.1rem}
+.stars_rating .rating-35{background-position:-2.9rem -3.1rem}
+.stars_rating .rating-45{background-position:0 -3.1rem}
+.stars_rating .rating-6{background-position:0 -30rem}
+.stars_rating .rating-16{background-position:-8.7rem -18rem}
+.stars_rating .rating-26{background-position:-5.8rem -18rem}
+.stars_rating .rating-36{background-position:-2.9rem -18rem}
+.stars_rating .rating-46{background-position:0 -18rem}
+.stars_rating .rating-7{background-position:0 -30rem}
+.stars_rating .rating-17{background-position:-8.7rem -21rem}
+.stars_rating .rating-27{background-position:-5.8rem -21rem}
+.stars_rating .rating-37{background-position:-2.9rem -21rem}
+.stars_rating .rating-47{background-position:0 -21rem}
+.stars_rating .rating-8{background-position:0 -30rem}
+.stars_rating .rating-18{background-position:-8.7rem -24rem}
+.stars_rating .rating-28{background-position:-5.8rem -24rem}
+.stars_rating .rating-38{background-position:-2.9rem -24rem}
+.stars_rating .rating-48{background-position:0 -24rem}
+.stars_rating .rating-9{background-position:0 -30rem}
+.stars_rating .rating-19{background-position:-8.7rem -26.9rem}
+.stars_rating .rating-29{background-position:-5.8rem -26.9rem}
+.stars_rating .rating-39{background-position:-2.9rem -26.9rem}
+.stars_rating .rating-49{background-position:0 -26.9rem}
+@media(min-width:320px) and (max-width:767px){.stars_rating .rating-static{background-size:44.8rem 24.3rem}
+.stars_rating .rating-50{background-position:0 -22.5rem}
+.stars_rating .rating-40{background-position:-2.1rem -22.5rem}
+.stars_rating .rating-30{background-position:-4.3rem -22.5rem}
+.stars_rating .rating-20{background-position:-6.5rem -22.5rem}
+.stars_rating .rating-10{background-position:-8.7rem -22.5rem}
+.stars_rating .rating-0{background-position:-10.8rem -22.5rem}
+.stars_rating .rating-1{background-position:-8.7rem -22.5rem}
+.stars_rating .rating-11{background-position:-6.5rem -11.3rem}
+.stars_rating .rating-21{background-position:-4.3rem -11.3rem}
+.stars_rating .rating-31{background-position:-2.2rem -11.3rem}
+.stars_rating .rating-41{background-position:0 -11.3rem}
+.stars_rating .rating-2{background-position:-6.5rem -22.5rem}
+.stars_rating .rating-12{background-position:-6.5rem -9rem}
+.stars_rating .rating-22{background-position:-4.3rem -9rem}
+.stars_rating .rating-32{background-position:-2.2rem -9rem}
+.stars_rating .rating-42{background-position:0 -9rem}
+.stars_rating .rating-3{background-position:-4.3rem -22.5rem}
+.stars_rating .rating-13{background-position:-6.5rem -6.8rem}
+.stars_rating .rating-23{background-position:-4.3rem -6.8rem}
+.stars_rating .rating-33{background-position:-2.2rem -6.8rem}
+.stars_rating .rating-43{background-position:0 -6.8rem}
+.stars_rating .rating-4{background-position:-2.1rem -22.5rem}
+.stars_rating .rating-14{background-position:-6.5rem -4.5rem}
+.stars_rating .rating-24{background-position:-4.3rem -4.5rem}
+.stars_rating .rating-34{background-position:-2.2rem -4.5rem}
+.stars_rating .rating-44{background-position:0 -4.5rem}
+.stars_rating .rating-5{background-position:0 -22.5rem}
+.stars_rating .rating-15{background-position:-6.5rem -2.3rem}
+.stars_rating .rating-25{background-position:-4.3rem -2.3rem}
+.stars_rating .rating-35{background-position:-2.2rem -2.3rem}
+.stars_rating .rating-45{background-position:0 -2.3rem}
+.stars_rating .rating-6{background-position:0 -22.5rem}
+.stars_rating .rating-16{background-position:-6.5rem -13.5rem}
+.stars_rating .rating-26{background-position:-4.3rem -13.5rem}
+.stars_rating .rating-36{background-position:-2.2rem -13.5rem}
+.stars_rating .rating-46{background-position:0 -13.5rem}
+.stars_rating .rating-7{background-position:0 -22.5rem}
+.stars_rating .rating-17{background-position:-6.5rem -15.7rem}
+.stars_rating .rating-27{background-position:-4.3rem -15.7rem}
+.stars_rating .rating-37{background-position:-2.2rem -15.7rem}
+.stars_rating .rating-47{background-position:0 -15.7rem}
+.stars_rating .rating-8{background-position:0 -22.5rem}
+.stars_rating .rating-18{background-position:-6.5rem -18rem}
+.stars_rating .rating-28{background-position:-4.3rem -18rem}
+.stars_rating .rating-38{background-position:-2.2rem -18rem}
+.stars_rating .rating-48{background-position:0 -18rem}
+.stars_rating .rating-9{background-position:0 -22.5rem}
+.stars_rating .rating-19{background-position:-6.5rem -20.2rem}
+.stars_rating .rating-29{background-position:-4.3rem -20.2rem}
+.stars_rating .rating-39{background-position:-2.2rem -20.2rem}
+.stars_rating .rating-49{background-position:0 -20.2rem}
+}
+.rm-header{background:#fff}
+.ui-datepicker-div{width:auto}
+.rm-day{font-size:36px;float:left}
+.rm-day{font-family:fs_lolalight}
+.rm-day:lang(zh){font-family:"Hiragino Sans GB W3, SimHei"}
+.rm-day:lang(iw){font-family:museum_light}
+.rm-day:lang(ja){font-family:"Hiragino Kaku Gothic Pro W3, Meiryo"}
+.rm-mon{font-size:36px;float:left;margin-left:96px}
+.rm-mon{font-family:fs_lolalight}
+.rm-mon:lang(zh){font-family:"Hiragino Sans GB W3, SimHei"}
+.rm-mon:lang(iw){font-family:museum_light}
+.rm-mon:lang(ja){font-family:"Hiragino Kaku Gothic Pro W3, Meiryo"}
+.ui-datepicker-title{text-align:center}
+.dp-highlight{background:#509e2f !important}
+.ui-datepicker-prev{float:left;margin-left:10px;margin-top:-5px}
+.ui-datepicker-next{float:right;margin-top:-5px;margin-right:30px}
+.date-range-picker-footer .availableCaption{display:none}
+.date-range-picker-footer .unavailableCaption{display:none}
+td.dp-highlight a.ui-state-default{color:#000}
+.ui-datepicker td span,.ui-datepicker td a{text-align:center}
+.ui-datepicker-div-header{font-size:17px;padding:2px 5px 7px}
+.ui-datepicker-unselectable.ui-state-disabled .ui-state-default{color:#828282;text-decoration:line-through}
+.ui-datepicker-div-close{background-color:#eee;border:1px solid #aaa;color:#aaa;float:right;line-height:10px;padding:2px 2px 6px 3px;cursor:pointer}
+.ui-datepicker-div-close:hover{color:#000}
+.ui-datepicker-div-reset{cursor:pointer;font-size:12px;margin:5px;text-decoration:underline}
+.ui-datepicker-placeholder{color:#aaa !important}
+.ui-datepicker-div-footer{margin:10px}
+.date-range-picker-footer{font-size:15px;font-weight:bold;margin:10px 5px}
+.date-range-picker-footer>span{margin-right:5%;float:left;margin-bottom:5px}
+.date-range-picker-footer .ui-state-default{margin-right:5px;padding:1px 15px}
+.date-range-picker-footer .selectedCaption span{background-color:#999;background-image:none;border:0}
+.date-range-picker-footer .availableCaption span{background-position:250px center;border:0}
+.date-range-picker-footer .unavailableCaption span{background-position:0 0;border:0 none}
+@media screen and (max-width:630px){.ui-datepicker{width:96% !important;left:1% !important}
+}
+.date-range-picker-footer{font-size:10.5px;padding-bottom:15px}
+.date-range-picker-footer>span{margin-right:4px}
+.ui-datepicker-header{background-image:none;background-color:#c13a02;color:#fff;border:0;border-radius:0}
+.ui-datepicker-multi-2 .ui-datepicker-group{border:1px solid #c13a02;width:47%;margin:2%}
+.ui-datepicker-group.ui-datepicker-group-last{margin-left:-1%}
+.ui-datepicker-div-header{font-size:12px;font-weight:bold;padding:9px 11px 0}
+td.dp-highlight a.ui-state-default,.ui-datepicker .ui-state-default.ui-state-active,.ui-datepicker-unselectable.ui-state-disabled.dp-highlight .ui-state-default{color:#fff;text-decoration:none}
+.ui-datepicker-unselectable.ui-state-disabled.dp-highlight{opacity:1}
+.ui-datepicker .ui-state-default{background-color:#9ed1ff;background-image:none}
+.ui-datepicker a.ui-state-default:hover{color:#fff}
+.ui-datepicker-div-footer{margin:0 5px}
+.date-range-picker-footer .unavailableCaption span{background-color:#e7e7e7}
+.date-range-picker-footer .selectedCaption span{background-color:#c13a02}
+.date-range-picker-footer>span{margin-right:8px}
+.date-range-picker-footer .ui-state-default{margin-right:2px}
+.ui-datepicker-div-reset{color:#c13a02;font-size:11px;margin-bottom:14px}
+.ui-widget-header a.ui-datepicker-next,.ui-widget-header a.ui-datepicker-prev,.ui-widget-header a.ui-datepicker-next:hover,.ui-widget-header a.ui-datepicker-prev:hover{background-image:none;background-color:#c13a02}
+.ui-widget-header a.ui-datepicker-prev:before,.ui-widget-header a.ui-datepicker-next:before{color:#666;content:"\f060";display:inline-block;font-family:'FontAwesome';font-style:normal;font-weight:normal;line-height:1}
+.ui-widget-header a.ui-datepicker-prev:before{content:"\f060";padding-left:5px;line-height:10px}
+.ui-widget-header a.ui-datepicker-next:before{content:"\f061";padding-left:5px;line-height:10px}
+.ui-datepicker .ui-datepicker-prev,.ui-datepicker .ui-datepicker-next,.ui-datepicker .ui-datepicker-prev,.ui-datepicker .ui-datepicker-next{height:23px;top:3px}
+.ui-datepicker .ui-datepicker-next-hover,.ui-datepicker .ui-datepicker-next{right:-12px}
+.ui-widget-header .ui-icon{display:none}
+.ui-datepicker-div-close{background-image:none;border-radius:4px;border:0;font-size:16px;padding:4px}
+.ui-datepicker{z-index:9999 !important}
+.ui-datepicker,.ui-datepicker a,.ui-datepicker span,.ui-datepicker a{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px}
+@media screen and (max-width:630px){.ui-datepicker-div-header{margin-bottom:5px}
+}
+.rm-datepicker{width:850px;z-index:9999}
+.rm-sel-holder>div{font-family:Arial}
+.rm-sel-holder>div:lang(zh){font-family:"Hiragino Sans GB W3, SimHei"}
+.rm-sel-holder>div:lang(iw){font-family:museum_regular}
+.rm-sel-holder>div:lang(ja){font-family:"Hiragino Kaku Gothic Pro W3, Meiryo"}
+.rm-header .rm-label{float:left;padding:10px 10px;text-align:center;margin-left:45%;font-size:20px;font-weight:normal;color:#666}
+.rm-header .rm-label{font-family:fs_lolamedium_italic}
+.rm-header .rm-label:lang(zh){font-family:"Hiragino Sans GB W3, SimHei"}
+.rm-header .rm-label:lang(iw){font-family:museum_regular}
+.rm-header .rm-label:lang(ja){font-family:"Hiragino Kaku Gothic Pro W3, Meiryo"}
+.rm-done{cursor:pointer;float:right;font-size:12px;padding:15px 10px;color:#666}
+.rm-sel-holder{cursor:pointer;float:left;padding:10px 0;text-align:center;width:50%}
+#rm-checkin,#rm-checkout{color:#fff}
+#rm-checkout{background-color:#494949;color:#fff}
+#rm-checkin{background-color:#494949;color:#fff}
+#rm-checkout{border-left:1px solid #eceae7}
+#rm-checkout.rm-active{background-color:#509e2f}
+#rm-checkin.rm-active{background-color:#509e2f}
+.rm-sel-dates .rm-label{font-size:24px;margin-left:1em;text-align:left;line-height:18px;margin-bottom:15px}
+.rm-sel-dates .rm-label{font-family:fs_lolalight_italic}
+.rm-sel-dates .rm-label:lang(zh){font-family:"Hiragino Sans GB W3, SimHei"}
+.rm-sel-dates .rm-label:lang(iw){font-family:museum_medium}
+.rm-sel-dates .rm-label:lang(ja){font-family:"Hiragino Kaku Gothic Pro W3, Meiryo"}
+.rm-sel-date{text-transform:uppercase}
+.rm-day-mon,.rm-date{float:left}
+.rm-date{font-size:36px;font-weight:normal;line-height:26px;padding-left:5%;text-align:left}
+.rm-day-mon{font-size:16px;text-align:center;width:75%;margin-left:5%;line-height:26px}
+.ui-datepicker-multi-2,#rm-datepicker-bg{border-radius:0 !important;overflow:hidden;width:850px !important;position:absolute;left:18% !important;padding:0;border:1px solid #ccc;background:#fff}
+#rm-datepicker-bg{z-index:1000;display:none}
+.ui-datepicker-multi-2 .ui-datepicker-group,.ui-datepicker-multi-4 .ui-datepicker-group{border:0 none;margin:0;width:50%;position:relative;background-color:#fff;float:left}
+.ui-datepicker-div-header,.ui-datepicker-div-footer .ui-datepicker-div-reset,.ui-datepicker-div-footer .selectedCaption{display:none}
+.date-range-picker-footer .availableCaption span,.date-range-picker-footer .unavailableCaption span{margin:4px;padding:2px 10px}
+.date-range-picker-footer .availableCaption span{background-color:#e37222}
+.date-range-picker-footer .unavailableCaption span{background-color:#eceae7}
+.date-range-picker-footer .availableCaption{color:#98002e;margin-right:40px}
+.date-range-picker-footer .unavailableCaption{color:#828282;margin-right:-17px}
+.date-range-picker-footer{text-align:center}
+.date-range-picker-footer>span{float:none}
+.ui-widget-header a.ui-datepicker-next,.ui-widget-header a.ui-datepicker-prev,.ui-widget-header a.ui-datepicker-next:hover,.ui-widget-header a.ui-datepicker-prev:hover{background-color:transparent;font-size:21px;top:25px;border:0 !important;cursor:pointer}
+.ui-widget-header a.ui-datepicker-next,.ui-widget-header a.ui-datepicker-next:hover{left:auto;top:25px;width:auto}
+.ui-widget-header a.ui-datepicker-prev:before,.ui-widget-header a.ui-datepicker-next:before{color:#666}
+.ui-widget-header a.ui-datepicker-prev:before{content:"\f104"}
+.ui-widget-header a.ui-datepicker-next:before{content:"\f105"}
+.ui-datepicker-prev.ui-corner-all.ui-state-disabled,.ui-datepicker-next.ui-corner-all.ui-state-disabled{opacity:.6;cursor:normal}
+.ui-datepicker .ui-datepicker-header{background-color:#fff;margin-left:2%;position:static;margin-top:10px}
+.ui-datepicker .ui-datepicker-title span{font-size:20px;text-transform:uppercase;color:#666;font-weight:normal}
+.ui-datepicker .ui-datepicker-title span{font-family:fs_lolamedium_italic}
+.ui-datepicker .ui-datepicker-title span:lang(zh){font-family:"Hiragino Sans GB W3, SimHei"}
+.ui-datepicker .ui-datepicker-title span:lang(iw){font-family:museum_regular}
+.ui-datepicker .ui-datepicker-title span:lang(ja){font-family:"Hiragino Kaku Gothic Pro W3, Meiryo"}
+.ui-datepicker-multi .ui-datepicker-group table{margin-top:10px}
+.ui-datepicker-multi .ui-datepicker-group table:last-child{margin-bottom:10px}
+.ui-datepicker-unselectable.ui-state-disabled .ui-state-default,.ui-datepicker .ui-state-default{border:0 none;font-size:16px;text-decoration:none;color:#666 !important}
+.ui-datepicker-unselectable.ui-state-disabled .ui-state-default{color:#ccc !important}
+.ui-datepicker .ui-datepicker-calendar thead span{color:#666;font-size:12px;text-transform:uppercase;font-weight:normal}
+.ui-datepicker .ui-state-default,.ui-datepicker a.ui-state-default,.ui-datepicker .ui-state-default.ui-state-active{background-color:transparent;color:#c95e2e;padding:15px 5px}
+.ui-datepicker-other-month{background:#fff !important}
+.ui-datepicker .dp-highlight a{color:#fff !important}
+.ui-state-disabled,.ui-datepicker .ui-state-disabled,.ui-widget-header .ui-state-disabled{opacity:1}
+.dp-checkout{position:relative}
+.dp-checkout:after{content:"\f0d9";position:absolute;top:16px;font-family:'FontAwesome';font-size:22px;color:#f0f0f0;right:0}
+.dp-checkin{position:relative}
+.dp-checkin:before{content:"\f0da";position:absolute;top:16px;font-family:'FontAwesome';font-size:22px;color:#f0f0f0;left:0}
+.ui-datepicker td span,.ui-datepicker td a{padding:3px 0}
+.ui-datepicker td{background:#f0f0f0;padding:0;margin:0}
+.show{display:block !important}
+html[lang="de"] #reservation input,html[lang="de"] #reservation select{font-size:14px}
+html[lang="fr"] #reservation select{font-size:14px}
+html[lang="zh"] #reservation input,html[lang="zh"] #reservation select{font-size:14px}
+html[lang="es"] #reservation select{font-size:14px}
+html[lang="fr"] #reservation input.hasDatepicker{font-size:12px}
+html[lang="es"] #reservation input.hasDatepicker{font-size:12px}
+@media(max-width:767px){.rm-sel-dates{margin-top:0}
+}
+@media(max-width:1279px){.ui-datepicker,#rm-datepicker-bg,#rm-datepicker{left:8.5% !important}
+}
+@media(max-width:1023px){.ui-datepicker,#rm-datepicker-bg,#rm-datepicker{left:2% !important}
+}
+@media(max-width:799px){.ui-datepicker,#rm-datepicker-bg,#rm-datepicker{left:0 !important;padding:0;top:0;width:100% !important}
+}
+@media(max-width:767px){#rm-datepicker-close,#ui-datepicker-div-footer{display:none}
+.rm-header{display:block;background:#fff;color:red}
+#ui-datepicker-div{position:fixed !important;top:0 !important;overflow-y:auto;height:100%}
+#rm-datepicker{top:0;width:100%;z-index:10000}
+#dp-outer{position:fixed;overflow:auto;top:0;width:100%;bottom:0;z-index:9999}
+.dp-open{overflow:hidden;position:fixed}
+.ui-datepicker-group{background-color:#eceae7}
+.ui-datepicker .ui-datepicker-header{width:90%;margin-left:5%}
+.ui-datepicker-group{width:100%;float:none}
+.ui-datepicker-group.ui-datepicker-group-first{padding-top:15px}
+.ui-datepicker-group.ui-datepicker-group-last{padding-bottom:15px}
+}
+@media(min-width:568px) and (max-width:767px){.ui-datepicker-multi .ui-datepicker-group{float:left;width:50%;padding-top:20px}
+#ui-datepicker-div{top:0 !important}
+}
+@media(min-width:480px) and (max-width:567px){.ui-datepicker-multi .ui-datepicker-group{float:left;width:50%;padding-top:20px}
+#ui-datepicker-div{top:0 !important}
+}
+@media(min-width:320px) and (max-width:767px){.rm-header .rm-label{margin-left:35%}
+.rm-sel-dates .rm-label{margin-left:.5em;font-size:21px}
+.rm-day-mon{width:70%}
+.rm-day{font-size:1.4em}
+.rm-mon{font-size:1.4em;margin-left:10%}
+.rm-date{font-size:1.4em;line-height:1.4em}
+#ui-datepicker-div{background:#fff}
+.ui-datepicker-multi .ui-datepicker-group table:last-child{width:94%;margin:5% 3%}
+.ui-datepicker-group{background:#fff}
+.ui-widget-header a.ui-datepicker-prev:before{content:"\f104";padding-top:18px}
+.ui-widget-header a.ui-datepicker-next:before{content:"\f105"}
+.ui-widget-header a.ui-datepicker-prev{left:0}
+.ui-datepicker-multi-2 .ui-datepicker-group,.ui-datepicker-multi-4 .ui-datepicker-group{width:100%}
+.ui-datepicker .ui-state-default,.ui-datepicker a.ui-state-default,.ui-datepicker .ui-state-default.ui-state-active{padding:22% 5%}
+.dp-checkout:after{top:12px;font-size:20px}
+.dp-checkin:before{top:12px;font-size:20px}
+}
+.ui-datepicker-calendar tr{border-bottom:1px solid #fff}
+.ui-datepicker-calendar tr td{border-right:1px solid #fff}

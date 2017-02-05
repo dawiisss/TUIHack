@@ -1,0 +1,1399 @@
+(function(a,b){a.Landing=(function(){function c(){var r=a.Global.locale;
+var i=a.Global.state;
+var o=a.Global.country;
+var k=a.Global.lat;
+var v=a.Global.lng;
+var q=a.Global.hotelCode;
+var s=a.Global.city;
+var w=a.Global.brandname;
+var l=a.Global.hostname;
+var m=a.Global.guestapi;
+var j=a.Global.brandCode;
+var u=a.Global.langCode;
+this.AKAMAI_COUNTRY="us";
+this.prefillCheckDatesFlag=true;
+b("body").one("click",function(){a.Landing.prefillCheckDatesFlag=true
+});
+if(j!=""&&j!=undefined&&j!=null){j=j.toLowerCase()
+}var n=function(y,x){if(y==null||y==undefined){return false
+}return y.indexOf(x,this.length-x.length)!==-1
+};
+this.guestapiurl=location.protocol+"//"+l+m+"/"+w+"/"+r;
+var f=b.cookie("dp");
+this.baseurl=location.protocol+"//"+l+"/"+w+"/hotels/"+r;
+if(f!=null&&f!=undefined&&f=="true"&&n(l,w+".com")){this.baseurl=location.protocol+"//"+l+"/hotels/"+r
+}var e=function(){if(b("#page-type").val()!=="hoteldetail"){return false
+}var y,x=null;
+if(a.Global.getCookie("iataCookie",0)){y=that.getCookie("iataCookie",0)
+}if(a.Global.readurlparam("akamaiCountryCode")){x=a.Global.readurlparam("akamaiCountryCode").toLowerCase()
+}else{x=a.Headers.AKAMAI_COUNTRY
+}var z={countryCode:a.Landing.AKAMAI_COUNTRY,hotelCode:q,languageCode:u,brand:j,akamaiCountryCode:x};
+if(y!=undefined&&y!=null&&y!=""){z.pmid=y
+}b.ajax({url:location.protocol+"//"+a.Global.hostname+"/gs-json/resDirectNumber",type:"GET",dataType:"json",data:z}).done(function(B){var A=B.resDirectNumber.number;
+b(".resdirect-num a").attr("href","tel:"+A.replace(/\s/g,"")).html(A);
+if(a.Landing.AKAMAI_COUNTRY==="uk"||a.Landing.AKAMAI_COUNTRY==="gb"){b(".gbtxt").css("display","block").insertAfter(".booking-text span,.booking span,.nav_resDirectNumber,.call-rail-section")
+}}).fail(function(A,B){})
+};
+var h=function(){if(!Modernizr.input.placeholder){b("[placeholder]").each(function(){var y=b(this),x=y.attr("placeholder");
+if(y.val()==""){y.val(x);
+y.addClass("hasPlaceholderText")
+}y.focus(function(){if(y.val()==x){y.val("");
+y.removeClass("hasPlaceholderText")
+}}).blur(function(){if(y.val()==""||y.val()==x){y.val(x);
+y.addClass("hasPlaceholderText")
+}});
+y.closest("form").submit(function(){if(y.val()==y.attr("placeholder")){y.val("")
+}})
+})
+}};
+var d=function(){b(".col-bookingadd figure img").click(function(x){b("body").append('<div id="whiteMask"></div>');
+b("#whiteMask").fadeIn(300);
+b(".best-guarantee-section").show();
+x.stopPropagation()
+})
+};
+var g=function(){try{var B=window.document.URL.toString().toLowerCase();
+var z=new XMLHttpRequest();
+z.open("GET",document.location,false);
+z.send(null);
+akamai=z.getResponseHeader("X-Akamai-Edgescape");
+if(akamai!=""&&akamai!=null&&akamai!=undefined){akamai=akamai.toLowerCase();
+var x=akamai.split(",");
+var A=x.length;
+var D="";
+var y="";
+for(p=0;
+p<A;
+p++){D=x[p].split("=");
+if(D[0]=="country_code"){y=D[1];
+if(y.length==2){a.Landing.AKAMAI_COUNTRY=y;
+break
+}}}}if(a.Reservation.readurlparam("akamaiCountryCode")){a.Landing.AKAMAI_COUNTRY=a.Reservation.readurlparam("akamaiCountryCode").toLowerCase()
+}}catch(C){}};
+this.redirectIHG=function(z){var A={qBrs:"6c.hi.ex.sb.ic.cp.cw.in.vn.rc.cv.rs.ma.tc",qDest:s+"+"+i+"+"+o,qHtlC:q,qPSt:"0",qRRSrt:"rt",qRpn:"1",qRpp:"10",qRtP:"6CBARC",qSHp:"1",qSlH:q,qSmP:"3",qSrt:"sDD",qWch:"0",srb_u:"1",iRR:"1",method:"redirect",modifySearch:"bookhotel_"+q,qRef:"df",qGRM:"0",qRmP:"3",pRmP:"3"};
+var x=z.UrlPath;
+var C=z.UrlString;
+if(x==""){for(key in A){var D=A[key];
+if(a.Reservation.readurlparam(key)==false){C=a.Reservation.updateURLParameter(C,key,D)
+}}a.Reservation.setdateCookie("cpurlparam",C)
+}else{for(key in A){if(C.indexOf(key)==-1){C+="&"+key+"="+A[key]
+}}var y=C.split("?");
+if(y.length>1){C=y[1]
+}else{C=y[0]
+}var B=a.Landing.baseurl+x+C;
+b(location).attr("href",B)
+}};
+this.chkavlupdateurl=function(z,F,A,E,y,C,H){var B="/reservation/book?";
+var D=a.Reservation.getdateCookie("cpurlparam");
+if(D!=null&&D!=""&&D!=undefined){D=a.Reservation.updateURLParameter(D,"qAdlt",z);
+D=a.Reservation.updateURLParameter(D,"qChld",F);
+D=a.Reservation.updateURLParameter(D,"qRms",H);
+D=a.Reservation.updateURLParameter(D,"qCiD",A);
+D=a.Reservation.updateURLParameter(D,"qCiMy",E);
+D=a.Reservation.updateURLParameter(D,"qCoD",y);
+D=a.Reservation.updateURLParameter(D,"qCoMy",C);
+var G={UrlPath:B,UrlString:D};
+a.Landing.redirectIHG(G)
+}else{var x="qAdlt="+z+"&qChld="+F+"&qCiD="+A+"&qCiMy="+E+"&qCoD="+y+"&qCoMy="+C+"&qRms="+H;
+var G={UrlPath:B,UrlString:x};
+a.Landing.redirectIHG(G)
+}};
+var t=(function(){b(function(){d();
+h();
+e()
+});
+b(window).load(function(){setTimeout(function(){b(".display-phone").html(function(y,x){return x.replace("(",'<div class="num-style">(')
+})
+},700);
+b("body,html").scrollTop(1)
+})
+})()
+}c.prototype.videoInit=function(d){var e=[],g=/(iPhone)/g.test(navigator.userAgent),f=/Android/i.test(navigator.userAgent);
+b(d).each(function(k){var h=b(this).attr("id"),i=b(this).parent(),j=b(this),l=videojs(h);
+b(document).ready(function(){l.on("play",function(){b(".vjs-poster",i).hide()
+});
+l.on("ended",function(){b(".vjs-poster",i).show()
+});
+if(g){b(".vjs-big-play-button",i).hide()
+}if(f){b(".vjs-big-play-button",i).addClass("m-playbutton")
+}if(window.location.hash){var m=window.location.hash;
+if(m.match(/[a-z]/g).join("")==="collapse"){setTimeout(function(){window.location=window.location.href;
+window.scrollBy(0,-b(".brandLogoNavWrapper").outerHeight())
+},1000)
+}}});
+e[k]=l
+});
+return e
+};
+return new c()
+})()
+})(window.IHG=window.IHG||{},jQuery,undefined);
+/*!
+ * The MIT License
+ *
+ * Copyright (c) 2012 James Allardice
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+(function(c){var n=document.createElement("input");
+var N=n.placeholder!==void 0;
+c.Placeholders={nativeSupport:N,disable:N?Y:E,enable:N?Y:f};
+if(N){return
+}var R=["text","search","url","tel","email","password","number","textarea"];
+var w=[27,33,34,35,36,37,38,39,40,8,46];
+var v="#ccc";
+var M="placeholdersjs";
+var B=new RegExp("(?:^|\\s)"+M+"(?!\\S)");
+var F="data-placeholder-value";
+var T="data-placeholder-active";
+var l="data-placeholder-type";
+var D="data-placeholder-submit";
+var r="data-placeholder-bound";
+var h="data-placeholder-focus";
+var U="data-placeholder-live";
+var m="data-placeholder-maxlength";
+var L=100;
+var u=document.getElementsByTagName("head")[0];
+var G=document.documentElement;
+var A=c.Placeholders;
+var j;
+var C=document.getElementsByTagName("input");
+var q=document.getElementsByTagName("textarea");
+var H=G.getAttribute(h)==="false";
+var a=G.getAttribute(U)!=="false";
+var o=document.createElement("style");
+o.type="text/css";
+var g=document.createTextNode("."+M+" {color:"+v+";}");
+if(o.styleSheet){o.styleSheet.cssText=g.nodeValue
+}else{o.appendChild(g)
+}u.insertBefore(o,u.firstChild);
+var I;
+var V;
+for(var W=0,x=C.length+q.length;
+W<x;
+W++){V=W<C.length?C[W]:q[W-C.length];
+I=V.attributes.placeholder;
+if(I){I=I.nodeValue;
+if(I&&X(R,V.type)){y(V)
+}}}var K=setInterval(function(){for(var ab=0,aa=C.length+q.length;
+ab<aa;
+ab++){V=ab<C.length?C[ab]:q[ab-C.length];
+I=V.attributes.placeholder;
+if(I){I=I.nodeValue;
+if(I&&X(R,V.type)){if(!V.getAttribute(r)){y(V)
+}if(I!==V.getAttribute(F)||(V.type==="password"&&!V.getAttribute(l))){if(V.type==="password"&&!V.getAttribute(l)&&k(V,"text")){V.setAttribute(l,"password")
+}if(V.value===V.getAttribute(F)){V.value=I
+}V.setAttribute(F,I)
+}}}else{if(V.getAttribute(T)){t(V);
+V.removeAttribute(F)
+}}}if(!a){clearInterval(K)
+}},L);
+Z(c,"beforeunload",function(){A.disable()
+});
+function Y(){}function P(){try{return document.activeElement
+}catch(i){}}function X(ab,ad){for(var ac=0,aa=ab.length;
+ac<aa;
+ac++){if(ab[ac]===ad){return true
+}}return false
+}function Z(ab,aa,i){if(ab.addEventListener){return ab.addEventListener(aa,i,false)
+}if(ab.attachEvent){return ab.attachEvent("on"+aa,i)
+}}function O(ab,aa){var i;
+if(ab.createTextRange){i=ab.createTextRange();
+i.move("character",aa);
+i.select()
+}else{if(ab.selectionStart){ab.focus();
+ab.setSelectionRange(aa,aa)
+}}}function k(aa,i){try{aa.type=i;
+return true
+}catch(ab){return false
+}}function J(aa,ai){if(aa&&aa.getAttribute(F)){ai(aa)
+}else{var ac=aa?aa.getElementsByTagName("input"):C;
+var ad=aa?aa.getElementsByTagName("textarea"):q;
+var ah=ac?ac.length:0;
+var ag=ad?ad.length:0;
+var af=ah+ag;
+var ab;
+for(var ae=0;
+ae<af;
+ae++){ab=ae<ah?ac[ae]:ad[ae-ah];
+ai(ab)
+}}}function E(i){J(i,t)
+}function f(i){J(i,S)
+}function t(ad,ac){var aa=!!ac&&ad.value!==ac;
+var ae=ad.value===ad.getAttribute(F);
+if((aa||ae)&&ad.getAttribute(T)==="true"){ad.removeAttribute(T);
+ad.value=ad.value.replace(ad.getAttribute(F),"");
+ad.className=ad.className.replace(B,"");
+var i=ad.getAttribute(m);
+if(parseInt(i,10)>=0){ad.setAttribute("maxLength",i);
+ad.removeAttribute(m)
+}var ab=ad.getAttribute(l);
+if(ab){ad.type=ab
+}return true
+}return false
+}function S(ab){var ac=ab.getAttribute(F);
+if(ab.value===""&&ac){ab.setAttribute(T,"true");
+ab.value=ac;
+ab.className+=" "+M;
+var i=ab.getAttribute(m);
+if(!i){ab.setAttribute(m,ab.maxLength);
+ab.removeAttribute("maxLength")
+}var aa=ab.getAttribute(l);
+if(aa){ab.type="text"
+}else{if(ab.type==="password"&&k(ab,"text")){ab.setAttribute(l,"password")
+}}return true
+}return false
+}function b(i){return function(){if(H&&i.value===i.getAttribute(F)&&i.getAttribute(T)==="true"){O(i,0)
+}else{t(i)
+}}
+}function z(i){return function(){S(i)
+}
+}function s(i){return function(){E(i)
+}
+}function e(i){return function(aa){j=i.value;
+if(i.getAttribute(T)==="true"&&j===i.getAttribute(F)&&X(w,aa.keyCode)){if(aa.preventDefault){aa.preventDefault()
+}return false
+}}
+}function Q(i){return function(){t(i,j);
+if(i.value===""){i.blur();
+O(i,0)
+}}
+}function d(i){return function(){if(i===P()&&i.value===i.getAttribute(F)&&i.getAttribute(T)==="true"){O(i,0)
+}}
+}function y(aa){var i=aa.form;
+if(i&&typeof i==="string"){i=document.getElementById(i);
+if(!i.getAttribute(D)){Z(i,"submit",s(i));
+i.setAttribute(D,"true")
+}}Z(aa,"focus",b(aa));
+Z(aa,"blur",z(aa));
+if(H){Z(aa,"keydown",e(aa));
+Z(aa,"keyup",Q(aa));
+Z(aa,"click",d(aa))
+}aa.setAttribute(r,"true");
+aa.setAttribute(F,I);
+if(H||aa!==P()){S(aa)
+}}}(this));
+$.datepicker.regional.en={closeText:"Done",prevText:"Prev",nextText:"Next",currentText:"Today",monthNames:["January","February","March","April","May","June","July","August","September","October","November","December"],monthNamesShort:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],dayNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],dayNamesShort:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],dayNamesMin:["Su","Mo","Tu","We","Th","Fr","Sa"],weekHeader:"Wk",locformdate:"M-dd-yy",firstDay:0,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Select Dates",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"mm/dd/yy",selectFromCaption:"Check In",selectToCaption:"Check Out",resetCaption:"Reset Calendar",availableCaption:"Available Dates",unavailableCaption:"Unavailable Dates",selectedCaption:"Selected Dates",fromTitle:"Check In (e.g. MM/DD/YYYY)",toTitle:"Check Out (e.g. MM/DD/YYYY)",fromPlaceholder:"mm/dd/yyyy",toPlaceholder:"Mon-DD-YYYY"};
+$.datepicker.regional.ar={closeText:"إغلاق",prevText:"&#x3C;السابق",nextText:"التالي&#x3E;",currentText:"اليوم",monthNames:["ينا","فبر","مار","أبر","ماي","يون","يول","أغس","سبت","أكت","نوف","ديس"],monthNamesShort:["1","2","3","4","5","6","7","8","9","10","11","12"],dayNames:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],dayNamesShort:["أحد","اثنين","ثلاثاء","أربعاء","خميس","جمعة","سبت"],dayNamesMin:["ح","ن","ث","ر","خ","ج","س"],weekHeader:"أسبوع",locformdate:"dd MM yy",firstDay:0,isRTL:true,showMonthAfterYear:false,yearSuffix:"",mobileTit:"حدد التواريخ",dayText:"يوم",mmText:"MMM",dateText:"00",dateFormat:"mm/dd/yy",selectFromCaption:"تسجيل الوصول",selectToCaption:"المغادرة",resetCaption:"إعادة تعيين التقويم",availableCaption:"التاريخ متوفر",unavailableCaption:"تاريخ غير متوفر",selectedCaption:"التاريخ المحدد",fromTitle:"تسجيل الوصول (مثال: يوم-شهر-سنة)",toTitle:"تسجيل المغادرة (مثال: يوم-شهر-سنة)",fromPlaceholder:"تسجيل الوصول",toPlaceholder:"تسجيل المغادرة"};
+$.datepicker.regional.pt={closeText:"Fechar",prevText:"&#x3c;Anterior",nextText:"Pr&oacute;ximo&#x3e;",currentText:"Hoje",monthNames:["Janeiro","Fevereiro","Mar&ccedil;o","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],monthNamesShort:["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],dayNames:["Domingo","Segunda-feira","Ter&ccedil;a-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sabado"],dayNamesShort:["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"],dayNamesMin:["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"],weekHeader:"Sm",locformdate:"D dd M yy",firstDay:0,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Selecionar datas",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"Dar Entrada",selectToCaption:"Sair De",resetCaption:"Redefinir calendário",availableCaption:"Datas disponíveis",unavailableCaption:"Datas indisponíveis",selectedCaption:"Datas selecionados",fromTitle:"Dar Entrada (e.g. DD/MM/YYYY)",toTitle:"Sair De (e.g. DD/MM/YYYY)",fromPlaceholder:"dd/mm/yy",toPlaceholder:"dd/mm/yy"};
+$.datepicker.regional.tr={closeText:"kapat",prevText:"&#x3C;geri",nextText:"ileri&#x3e",currentText:"bugün",monthNames:["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"],monthNamesShort:["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"],dayNames:["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"],dayNamesShort:["Pz","Pt","Sa","Ça","Pe","Cu","Ct"],dayNamesMin:["Pz","Pt","Sa","Ça","Pe","Cu","Ct"],weekHeader:"Hf",locformdate:"dd M yy",firstDay:1,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Tarihleri Seçin",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"Kayıt Yaptırmak",selectToCaption:"Kaydını Kapatmak",resetCaption:"Reset Calendar",availableCaption:"Available Dates",unavailableCaption:"Unavailable Dates",selectedCaption:"Selected Dates",fromTitle:"Check In (e.g. MM/DD/YYYY)",toTitle:"Check Out (e.g. MM/DD/YYYY)",fromPlaceholder:"dd/mm/yy",toPlaceholder:"Mon-DD-YYYY"};
+$.datepicker.regional.de={closeText:"Schließen",prevText:"&#x3C;Zurück",nextText:"Vor&#x3E;",currentText:"Heute",monthNames:["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],monthNamesShort:["Jan","Feb","Mrz","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],dayNames:["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],dayNamesShort:["So","Mo","Di","Mi","Do","Fr","Sa"],dayNamesMin:["So","Mo","Di","Mi","Do","Fr","Sa"],weekHeader:"KW",locformdate:"D dd M yy",firstDay:1,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Datum auswählen",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"Anreise",selectToCaption:"Abreise",resetCaption:"Kalender zurücksetzen",availableCaption:"Verfügbares Datum",unavailableCaption:"Nicht verfügbares Datum",selectedCaption:"Gewähltes Datum",fromTitle:"Anreise (e.g. MM/DD/YYYY)",toTitle:"Abreise (e.g. MM/DD/YYYY)",fromPlaceholder:"dd/mm/yyyy",toPlaceholder:"Mon-DD-YYYY"};
+$.datepicker.regional.fr={closeText:"Fermer",prevText:"Précédent",nextText:"Suivant",currentText:"Aujourd'hui",monthNames:["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],monthNamesShort:["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."],dayNames:["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"],dayNamesShort:["dim.","lun.","mar.","mer.","jeu.","ven.","sam."],dayNamesMin:["D","L","M","M","J","V","S"],weekHeader:"Sem.",locformdate:"D dd M yy",firstDay:1,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Choisir des dates",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"Arrivée",selectToCaption:"Départ",resetCaption:"Remettre le calendrier à zéro",availableCaption:"Date disponible",unavailableCaption:"Date indisponible",selectedCaption:"Date sélectionnée",fromTitle:"Arrivée (e.g. Mon-DD-YYYY)",toTitle:"Départ (e.g. Mon-DD-YYYY)",fromPlaceholder:"dd/mm/yyyy",toPlaceholder:"Day. DD Mon. YYYY"};
+$.datepicker.regional["gb-en"]={closeText:"Done",prevText:"Prev",nextText:"Next",currentText:"Today",monthNames:["January","February","March","April","May","June","July","August","September","October","November","December"],monthNamesShort:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],dayNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],dayNamesShort:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],dayNamesMin:["Su","Mo","Tu","We","Th","Fr","Sa"],weekHeader:"Wk",locformdate:"dd M yy",firstDay:1,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Select Dates",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"Check In",selectToCaption:"Check Out",resetCaption:"Reset Calendar",availableCaption:"Available Dates",unavailableCaption:"Unavailable Dates",selectedCaption:"Selected Dates",fromTitle:"Check In (e.g. mm/dd/yy)",toTitle:"Check Out (e.g. mm/dd/yy)",fromPlaceholder:"dd/mm/yyyy",toPlaceholder:"Mon-DD-YYYY"};
+$.datepicker.regional.zh={closeText:"关闭",prevText:"&#x3C;上月",nextText:"下月&#x3E;",currentText:"今天",monthNames:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],monthNamesShort:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],dayNamesShort:["周日","周一","周二","周三","周四","周五","周六"],dayNamesMin:["日","一","二","三","四","五","六"],weekHeader:"周",locformdate:"yy MM dd DD",firstDay:1,isRTL:false,showMonthAfterYear:true,yearSuffix:"年",mobileTit:"选择日期",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"yy/mm/dd",selectFromCaption:"入住",selectToCaption:"离店",resetCaption:"重置日历",availableCaption:"可选日期",unavailableCaption:"不可选日期",selectedCaption:"已选日期",fromTitle:"入住 （格式：月-日-年）",toTitle:"离店 （格式：月-日-年）",fromPlaceholder:"yyyy/mm/dd",toPlaceholder:"月-日-年"};
+$.datepicker.regional.es={closeText:"Cerrar",prevText:"&#x3C;Ant",nextText:"Sig&#x3E;",currentText:"Hoy",monthNames:["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],monthNamesShort:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],dayNames:["domingo","lunes","martes","miércoles","jueves","viernes","sábado"],dayNamesShort:["dom","lun","mar","mié","jue","vie","sáb"],dayNamesMin:["D","L","M","X","J","V","S"],weekHeader:"Sm",locformdate:"D dd M yy",firstDay:1,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Seleccionar fechas",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"mm/dd/yy",selectFromCaption:"Fecha de entrada",selectToCaption:"Fecha de salida",resetCaption:"Reiniciar el calendario",availableCaption:"Fecha disponible",unavailableCaption:"Fecha no disponible",selectedCaption:"Fecha seleccionada",fromTitle:"Fecha de entrada (e.g. Mon-DD-YYYY)",toTitle:"Fecha de salida (e.g. Mon-DD-YYYY)",fromPlaceholder:"mm/dd/yyyy",toPlaceholder:"Day DD Mon. YYYY"};
+$.datepicker.regional.nl={closeText:"Sluiten",prevText:"←",nextText:"→",currentText:"Vandaag",monthNames:["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"],monthNamesShort:["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"],dayNames:["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"],dayNamesShort:["zon","maa","din","woe","don","vri","zat"],dayNamesMin:["zo","ma","di","wo","do","vr","za"],weekHeader:"Wk",locformdate:"M-dd-yy",firstDay:1,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Selecteer Data",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"Check in datum",selectToCaption:"Check out datum",resetCaption:"Kalender terugzetten",availableCaption:"Beschikbare datum",unavailableCaption:"Niet-beschikbare datum",selectedCaption:"Gekozen datum",fromTitle:"Inchecken (bijv. DD-MMM-JJJJ)",toTitle:"Uitchecken (bijv. DD-MMM-JJJJ)",fromPlaceholder:"dd/mm/yyyy",toPlaceholder:"Day DD Mon. YYYY"};
+$.datepicker.regional.ru={closeText:"Закрыть",prevText:"&#x3C;Пред",nextText:"След&#x3E;",currentText:"Сегодня",monthNames:["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"],monthNamesShort:["Янв","Фев","Мар","Апр","Май","Июн","Июл","Авг","Сен","Окт","Ноя","Дек"],dayNames:["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"],dayNamesShort:["Вс","Пн","Вт","Ср","Чт","Пт","Сб"],dayNamesMin:["Вс","Пн","Вт","Ср","Чт","Пт","Сб"],weekHeader:"Нед",locformdate:"D dd M yy",firstDay:1,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Выберите Сроки",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"Прибытие",selectToCaption:"Отъезд",resetCaption:"сброс данных календаря",availableCaption:"Доступная дата",unavailableCaption:"Дата недоступна",selectedCaption:"Выбранная дата",fromTitle:"Прибытие (например, Мес-ДД-ГГГГ)",toTitle:"выезда (например, Мес-ДД-ГГГГ)",fromPlaceholder:"dd/mm/yyyy",toPlaceholder:"Day DD Mon. YYYY"};
+$.datepicker.regional.ja={closeText:"閉じる",prevText:"&#x3C;前",nextText:"次&#x3E;",currentText:"今日",monthNames:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],monthNamesShort:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],dayNames:["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"],dayNamesShort:["日","月","火","水","木","金","土"],dayNamesMin:["日","月","火","水","木","金","土"],weekHeader:"週",locformdate:"yy年mm月dd日 D",firstDay:1,isRTL:false,showMonthAfterYear:true,yearSuffix:"年",mobileTit:"日付を選択します",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"yy/dd/mm",selectFromCaption:"チェックイン",selectToCaption:"チェックアウト",resetCaption:"カレンダーをリセット",availableCaption:"空室あり",unavailableCaption:"空室なし",selectedCaption:"ご希望の宿泊日",fromTitle:"チェックイン （例: 月-日-年）",toTitle:"チェックアウト （例: 月-日-年）",fromPlaceholder:"yyyy/dd/mm",toPlaceholder:"Day DD Mon. YYYY"};
+$.datepicker.regional.it={closeText:"Chiudi",prevText:"&#x3C;Prec",nextText:"Succ&#x3E;",currentText:"Oggi",monthNames:["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"],monthNamesShort:["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"],dayNames:["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"],dayNamesShort:["Dom","Lun","Mar","Mer","Gio","Ven","Sab"],dayNamesMin:["Do","Lu","Ma","Me","Gi","Ve","Sa"],weekHeader:"Sm",locformdate:"D dd M yy",firstDay:1,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"Seleziona date",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"Data del check-in",selectToCaption:"Data del check-out",resetCaption:"Azzera il calendario",availableCaption:"Data disponibile",unavailableCaption:"Data non disponibile",selectedCaption:"Data selezionata",fromTitle:"Data del check-in (e.g. Mon-DD-YYYY)",toTitle:"Data del check-out (e.g. Mon-DD-YYYY)",fromPlaceholder:"dd/mm/yyyy",toPlaceholder:"Day DD Mon. YYYY"};
+$.datepicker.regional.ko={closeText:"닫기",prevText:"이전달",nextText:"다음달",currentText:"오늘",monthNames:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],monthNamesShort:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],dayNames:["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],dayNamesShort:["일","월","화","수","목","금","토"],dayNamesMin:["일","월","화","수","목","금","토"],weekHeader:"Wk",locformdate:"yy년mm월dd일 D",firstDay:1,isRTL:false,showMonthAfterYear:true,yearSuffix:"년",mobileTit:"날짜 선택",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"yy/dd/mm",selectFromCaption:"체크인",selectToCaption:"체크아웃",resetCaption:"일정표 초기화",availableCaption:"이용 가능 날짜",unavailableCaption:"이용 불가 날짜",selectedCaption:"선택한 날짜",fromTitle:"체크인 (예: 월-일-년)",toTitle:"체크아웃 (예: 월-일-년)",fromPlaceholder:"yyyy/dd/mm",toPlaceholder:"Day DD Mon. YYYY"};
+$.datepicker.regional.iw={closeText:"סגור",prevText:"&#x3C;הקודם",nextText:"הבא&#x3E;",currentText:"היום",monthNames:["ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],monthNamesShort:["ינו","פבר","מרץ","אפר","מאי","יוני","יולי","אוג","ספט","אוק","נוב","דצמ"],dayNames:["יום שבת","יום שישי","יום חמישי","יום רביעי","יום שלישי","יום שני","יום ראשון"],dayNamesShort:["א'","ב'","ג'","ד'","ה'","ו'","שבת"],dayNamesMin:["א'","ב'","ג'","ד'","ה'","ו'","שבת"],weekHeader:"Wk",locformdate:"yy MM dd DD",firstDay:0,isRTL:false,showMonthAfterYear:false,yearSuffix:"",mobileTit:"בחרו תאריכים",dayText:"DAY",mmText:"MMM",dateText:"00",dateFormat:"dd/mm/yy",selectFromCaption:"עזיבה",selectToCaption:"הגעה",resetCaption:"אפס את לוח השנה",availableCaption:"תאריך זמין",unavailableCaption:"תאריך לא זמין",selectedCaption:"התאריך שנבחר",fromTitle:"עזיבה (למשל, MM-DD-YYYY)",toTitle:"הגעה (למשל, MM-DD-YYYY)",fromPlaceholder:"dd/mm/yyyy",toPlaceholder:"Day DD Mon. YYYY"};
+(function(a,d){try{a.utils={getDateSansTime:function(){return new Date(new Date().setHours(0,0,0,0))
+},jsonToUrl:function(g,h){try{if(typeof(g)==="string"){g=JSON.parse(g)
+}var f=Object.keys(g).map(function(e){if(h){return encodeURIComponent(e)+"="+encodeURIComponent(g[e])
+}else{return e+"="+g[e]
+}}).join("&");
+return f
+}catch(i){throw i
+}},urlToJson:function(h){var g={};
+try{var i=h;
+if(i[0]=="?"){i=h.slice(1)
+}if(h.hasOwnProperty("search")){i=h.search.slice(1)
+}if(i&&i.length){var f=decodeURI(i).replace(/"/g,'\\"').replace(/&amp;/g,"&").replace(/&/g,'","').replace(/=/g,'":"');
+if(f&&f.length){g=JSON.parse('{"'+f+'"}')
+}}}catch(k){g={}
+}return g
+},filterKeys:function(k,j){var h=false;
+var g={};
+if(j&&j.length>0){h=true
+}if(h){for(var e=0;
+e<j.length;
+e++){if(k.hasOwnProperty(j[e])){g[j[e]]=k[j[e]]
+}}}else{g=k
+}return g
+},urlParams:function(){return this.urlToJson(document.location.search)
+},checkManualEntry:function(e){if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){$(e).attr("readonly","readonly")
+}else{$(e).removeAttr("readonly")
+}},getDateFromStr:function(h){var k=IHG.Global.countryCode;
+var j=IHG.Global.langCode||"en";
+if(j=="en"&&k=="gb"){j="gb-en"
+}var g=false;
+var f=/[0-9]{2}\/[0-9]{2}\/[0-9]{2,4}/;
+try{if(f.test(h)){g=$.datepicker.parseDate($.datepicker.regional[j].dateFormat,h,$.datepicker.regional[j])
+}else{g=$.datepicker.parseDate($.datepicker.regional[j].locformdate,h,$.datepicker.regional[j])
+}return g
+}catch(i){return false
+}},getStrFromDate:function(g){var j=IHG.Global.countryCode;
+var i="en";
+var f=false;
+try{f=$.datepicker.formatDate($.datepicker.regional[i].locformdate,g,$.datepicker.regional[i]);
+return f
+}catch(h){return false
+}},taskRunner:function b(e,f){var g,h,i;
+if(typeof(e)==="function"){g=e;
+h=f;
+init=this
+}this.exec=function(){if(i){clearTimeout(i)
+}i=setTimeout(function(){g.call()
+},h)
+};
+return init
+},trim:function(e){return e.replace(/^\s+|\s+$/g,"")
+}};
+$(function(){if(!window.console){window.console=function(){$.noop()
+}
+}})
+}catch(c){console.log(c)
+}}(window._sape=window._sape||{}));
+(function(h,d,b){try{var k=h.utils.getDateSansTime();
+var l=24*60*60*1000;
+var g=h.utils.getDateSansTime();
+g.setDate(k.getDate()-1);
+var f=h.utils.getDateSansTime();
+f.setDate(k.getDate()+1);
+var c=typeof(resOptions.dateConfig.minStay)==="undefined"?1:resOptions.dateConfig.minStay;
+var a=typeof(resOptions.dateConfig.maxStay)==="undefined"?99:resOptions.dateConfig.maxStay;
+var j=new Date(k.getTime()+(350*l));
+h.controls={datepicker:function(u,o,D,C){var w=k;
+var r=(resOptions.dateConfig.minStay)?new Date(w.getTime()+resOptions.dateConfig.minStay*l):f;
+var m,E,z,x,F,B,q,t,y,n;
+var s=this;
+var A=IHG.Global.countryCode;
+var H=IHG.Global.langCode||"en";
+if(H=="en"&&A=="gb"){H="gb-en"
+}d.datepicker.setDefaults(d.datepicker.regional[H]);
+if(d.datepicker.regional[H]){m=d.datepicker.regional[H]["monthNamesShort"];
+E=d.datepicker.regional[H]["dayNamesShort"];
+z=d.datepicker.regional[H]["closeText"];
+x=d.datepicker.regional[H]["mobileTit"];
+F=d.datepicker.regional[H]["selectFromCaption"];
+B=d.datepicker.regional[H]["selectToCaption"];
+q=d.datepicker.regional[H]["dayText"];
+t=d.datepicker.regional[H]["mmText"];
+y=d.datepicker.regional[H]["dateText"]
+}this.getMinCheckin=function(){return g
+};
+this.getMinCheckout=function(){return minCheckOut
+};
+var e=function(I,J){d(I).val(d.datepicker.formatDate(d.datepicker.regional[H].dateFormat,J,d.datepicker.regional[H]))
+};
+this.setCheckinDate=function(J){var I=new Date(J);
+if(I.getTime()<g.getTime()||I.getTime()>j.getTime()){I=k
+}w=I;
+e(u,I);
+s.setCheckoutRange(I);
+D(I)
+};
+this.setCheckoutDate=function(J){var I=new Date(J);
+e(o,I);
+I=d(o).datepicker("getDate");
+r=I;
+C(I)
+};
+this.genHeaderHTML=function(I){return"<div class='rm-datepicker' id='rm-datepicker'><div class='rm-header clearfix'><div class='rm-label'>"+x+"</div><div class='rm-done' id='rm-done'>"+z+"</div></div><div id='rm-datepicker-close'></div><div class='rm-sel-dates'><div id='rm-checkin' class='rm-sel-holder"+((I===u)?" rm-active":"")+"'><div class='rm-label'>"+F+"</div><div class='rm-sel-date'><div class='rm-day-mon'><div class='rm-day' id='rm-checkin-day'>"+E[w.getDay()].toUpperCase()+"</div><div class='rm-mon' id='rm-checkin-mon'>"+m[w.getMonth()].toUpperCase()+"</div></div><div class='rm-date' id='rm-checkin-date'>"+("0"+w.getDate()).slice(-2)+"</div></div></div><div id='rm-checkout' class='rm-sel-holder"+((I===o)?" rm-active":"")+"'><div class='rm-label'>"+B+"</div><div class='rm-sel-date'><div class='rm-day-mon'><div class='rm-day' id='rm-checkout-day'>"+E[r.getDay()].toUpperCase()+"</div><div class='rm-mon' id='rm-checkout-mon'>"+m[r.getMonth()].toUpperCase()+"</div></div><div class='rm-date' id='rm-checkout-date'>"+("0"+r.getDate()).slice(-2)+"</div></div></div><div class='clearfix'></div></div></div>"
+};
+this.getDateFromStr=function(I){return d.datepicker.parseDate(d.datepicker.regional[H].dateFormat,I,d.datepicker.regional[H])
+};
+this.getStrFromDate=function(I){return d.datepicker.formatDate(d.datepicker.regional[H].locformdate,I,d.datepicker.regional[H])
+};
+var G=function(L,K,I){if(K>I){var J=I;
+I=K;
+K=J
+}d(L).datepicker("option","minDate",K);
+d(L).datepicker("option","maxDate",I)
+};
+this.setCheckoutRange=function(I){minCheckOut=new Date(I.getTime()+((c)*l));
+minCheckOut.setHours(0);
+minCheckOut.setMinutes(0);
+minCheckOut.setSeconds(0);
+minCheckOut.setMilliseconds(0);
+var J=new Date(I.getTime()+(a*l));
+if(J>=j){J=j
+}n=J;
+G(o,minCheckOut,J)
+};
+this.setValidCheckout=function(J){var I=d(o).val();
+I=h.utils.trim(I);
+if(I===""||J>=r){r=new Date(J.getFullYear(),J.getMonth(),J.getDate());
+r=new Date(r.setDate(r.getDate()+c))
+}s.setCheckoutDate(r)
+};
+this.beforeShowDay=function(I){if(I>=w&&I<=r){if(I.getTime()==w.getTime()){return[true,"dp-highlight dp-checkin"]
+}else{if(I.getTime()==r.getTime()){return[true,"dp-highlight dp-checkout"]
+}else{return[true,"dp-highlight"]
+}}}else{return[true,""]
+}};
+var v=function(I){setTimeout(function(){d("#rm-done").click(function(){d(I).datepicker("hide")
+});
+d("#rm-checkin").click(function(){d(u).datepicker("show")
+});
+d("#rm-checkout").click(function(){d(o).datepicker("show")
+})
+},100)
+};
+this.prepareToShow=function(I){setTimeout(function(){if(checkViewPort()!="mobile"){d("html, body").animate({scrollTop:d("#"+I.id).offset().top-140},100);
+d("#"+I.id).datepicker("widget").css({top:d("#"+I.id).offset().top+d("#"+I.id).outerHeight()})
+}if(checkViewPort()=="mobile"){d("#"+I.id).datepicker("widget").css({top:d("#rm-datepicker").outerHeight()})
+}},1)
+};
+d(u).datepicker({numberOfMonths:2,showAnim:"slideDown",beforeShow:function(J,I){s.prepareToShow(I);
+v(u)
+},onChangeMonthYear:function(J,K,I){s.prepareToShow(I);
+v(u)
+},onSelect:function(I,J){D(I,J);
+w=s.getDateFromStr(I);
+s.setCheckoutRange(w);
+s.setValidCheckout(w);
+setTimeout(function(){d(o).focus()
+},100)
+},drawCustomHeader:true,customHeaderFn:function(){return s.genHeaderHTML(u)
+},beforeShowDay:s.beforeShowDay});
+G(u,g,j);
+d(o).datepicker({numberOfMonths:2,showAnim:"slideDown",beforeShow:function(J,I){s.prepareToShow(I);
+v(o)
+},onChangeMonthYear:function(J,K,I){s.prepareToShow(I);
+v(o)
+},onSelect:function(I,J){r=s.getDateFromStr(I);
+s.setValidCheckout(w);
+setTimeout(function(){d(o).datepicker("hide")
+},0)
+},drawCustomHeader:true,customHeaderFn:function(){return s.genHeaderHTML(o)
+},beforeShowDay:s.beforeShowDay});
+s.setCheckoutRange(k);
+return s
+},numStepper:function(r,q,u,m,t,w,e,o){if(!r){return
+}if((q===b)||(q==="")||(q===null)){q=1
+}if(!u){u=10
+}if(!m){m=false
+}if(!t){t=2
+}if(!w){w=function(){d.noop()
+}
+}if(!e){e=function(){d.noop()
+}
+}var n=d(r).prev();
+var s=d(r).next();
+d(n).unbind("click");
+d(s).unbind("click");
+function v(x){if(m){x=("0"+x).slice(-1*t)
+}d(r).val(x);
+w(x)
+}d(r).change(function(y){var x=d(this).val();
+x=parseInt(x,10);
+if(x&&!isNaN(x)){if(x<q){x=q
+}if(x>u){x=u;
+if(e){e(o)
+}}}else{x=q
+}v(x)
+});
+d(n).click(function(y){var x=d(r).val();
+x=parseInt(x,10);
+if(!isNaN(x)){x=x-1;
+if(x<q){x=q
+}v(x)
+}y.stopPropagation()
+});
+d(s).click(function(y){var x=d(r).val();
+x=parseInt(x,10);
+if(!isNaN(x)){x=x+1;
+if(x>u){x=u;
+e(o)
+}v(x)
+}y.stopPropagation()
+});
+d(n).mousedown(function(x){x.preventDefault()
+});
+d(s).mousedown(function(x){x.preventDefault()
+})
+},internalLink:function(e){d("a."+e).click(function(o){o.preventDefault();
+var m=d(this).attr("href");
+var r=m.split("#");
+var q="";
+if(r.length>1){m=r[0];
+q=r[1]
+}var n=m+document.location.search+"#"+q;
+window.location=n
+})
+}}
+}catch(i){console.log(i)
+}}(window._sape=window._sape||{},jQuery));
+(function(a,b){a.Browser_properties=(function(){function c(){var f=this;
+f.objAgent=navigator.userAgent;
+f.objbrowserName=navigator.appName;
+f.country_code,f.lang_code,f.walletState,f.ssoState,f.walletState;
+f.objOffsetName,f.objOffsetVersion;
+f.device_type;
+f.checkin,f.checkout,f.checkinpl,f.checkoutpl;
+f.totaladults;
+f.adultcnt=1;
+f.dev_type="";
+f.browser_name="";
+f.d;
+var e=function(){if((f.objOffsetVersion=f.objAgent.indexOf("Chrome"))!=-1){f.objbrowserName="Chrome"
+}else{if((f.objOffsetVersion=f.objAgent.indexOf("MSIE"))!=-1){f.objbrowserName="Microsoft Internet Explorer"
+}else{if((f.objOffsetVersion=f.objAgent.indexOf("Firefox"))!=-1){f.objbrowserName="Firefox"
+}else{if((f.objOffsetVersion=f.objAgent.indexOf("Safari"))!=-1){f.objbrowserName="Safari"
+}else{if((f.objOffsetName=f.objAgent.lastIndexOf(" ")+1)<(f.objOffsetVersion=f.objAgent.lastIndexOf("/"))){f.objbrowserName=f.objAgent.substring(objOffsetName,f.objOffsetVersion);
+if(f.objbrowserName.toLowerCase()==f.objbrowserName.toUpperCase()){f.objbrowserName=navigator.appName
+}}}}}}};
+var d=function(){if(f.objAgent.match(/Android/i)){f.device_type="Android"
+}else{if(f.objAgent.match(/BlackBerry/i)){f.device_type="BlackBerry"
+}else{if(f.objAgent.match(/iPhone|iPad|iPod/i)){f.device_type="iOS"
+}else{if(f.objAgent.match(/Opera Mini/i)){f.device_type="Opera"
+}else{if(f.objAgent.match(/IEMobile/i)){f.device_type="Windows"
+}}}}}};
+f.ihgglobalparams=function(){f.brand_code=a.Global.brandCode;
+f.country_code=b("#country-code").val();
+f.lang_code=b("#language-code").val();
+if(f.lang_code!=undefined&&f.lang_code!=null&&f.lang_code!=""){f.lang_code=f.lang_code.toLowerCase()
+}f.ssoState="anonymous";
+if(b.cookie("uhf_userstate")){f.ssoState=b.cookie("uhf_userstate").toLowerCase()
+}if(b.cookie("country_language")){var h=b.cookie("country_language").split("$:");
+f.country_code=(h[0])?h[0].toLowerCase():f.country_code;
+f.lang_code=(h[1])?h[1].toLowerCase():f.lang_code
+}if(f.objbrowserName!=undefined&&f.objbrowserName!=null&&f.objbrowserName!=""){f.browser_name=f.objbrowserName
+}if(f.device_type!=undefined&&f.device_type!=null&&f.device_type!=""){f.dev_type=f.device_type
+}f.d={brandCode:f.brand_code,countryCode:f.country_code,languageCode:f.lang_code,loginState:f.ssoState,browserType:f.browser_name,deviceType:f.dev_type,hotelCode:a.Global.hotelCode,bookingBrand:f.brand_code,bookingCity:a.Global.city,bookingState:a.Global.state,hotelCountryCode:f.country_code,akamaiCountryCode:a.Headers.AKAMAI_COUNTRY,currencyCode:a.Global.currencyCode}
+};
+var g=(function(){b(function(){e();
+d()
+})
+})()
+}return new c()
+})()
+})(window.IHG=window.IHG||{},jQuery,undefined);
+(function(a,c,f){try{function b(){var q=c("#page-type").val()||window.pageType,g=false,s=false,h=false,k=false,w=false,r=[],n="",l,i=false,x,t,v,j,m,e=[],u=0,o={};
+this.offersuccess,this.userflag=false;
+this.ihgofferservice=function(z,A){a.Browser_properties.ihgglobalparams();
+if(i===true){a.Services.sendOffersRequest(x,t,v,j,z,m,A)
+}else{var y=setInterval(function(){m=a.Global.rewardsClubNumber;
+u++;
+var B=a.Services.getPrefillValues();
+if(B.request=="complete"&&a.Services.userflag==true){clearInterval(y);
+if(B.params.checkInDate){x=_sape.utils.getDateFromStr(B.params.checkInDate);
+x=_sape.utils.getStrFromDate(x);
+a.Landing.prefillCheckDatesFlag=false
+}else{x=_sape.utils.getDateSansTime();
+x=_sape.utils.getStrFromDate(x)
+}if(B.params.checkOutDate){t=_sape.utils.getDateFromStr(B.params.checkOutDate);
+t=_sape.utils.getStrFromDate(t)
+}else{x=_sape.utils.getDateSansTime();
+t=_sape.utils.getDateSansTime();
+t.setDate(x.getDate()+resOptions.dateConfig.minStay);
+x=_sape.utils.getStrFromDate(x);
+t=_sape.utils.getStrFromDate(t)
+}if(B.params.numberOfAdults){v=B.params.numberOfAdults;
+j=B.params.numberOfChildren
+}else{v="1";
+j="0"
+}i=true;
+a.Services.sendOffersRequest(x,t,v,j,z,m,A)
+}else{if(u>=10&&a.Services.userflag==true){clearInterval(y);
+x=_sape.utils.getDateSansTime();
+t=_sape.utils.getDateSansTime();
+t.setDate(x.getDate()+resOptions.dateConfig.minStay);
+x=_sape.utils.getStrFromDate(x);
+t=_sape.utils.getStrFromDate(t);
+v="1";
+j="0";
+i=true;
+a.Services.sendOffersRequest(x,t,v,j,z,m,A)
+}}},500)
+}};
+this.sendOffersRequest=function(C,D,z,B,A,y,E){a.Browser_properties.d.checkInDate=C;
+a.Browser_properties.d.checkOutDate=D;
+a.Browser_properties.d.bookingTotalAdults=z;
+a.Browser_properties.d.bookingTotalChildren=B;
+a.Browser_properties.d.slotIds=A;
+if(y!=f&&y!=null&&y!=""&&a.Browser_properties.ssoState!="anonymous"){a.Browser_properties.d.rewardsClubNumber=y;
+a.Browser_properties.d.loginState=a.Browser_properties.ssoState
+}c.ajax({url:a.Global.guestapiurl+"/getOffersAndRecommendations",type:"GET",dataType:"json",data:a.Browser_properties.d,cache:true}).done(function(F,G){a.Services.offersuccess=true;
+E(F)
+}).fail(function(F,G){})
+};
+this.getRecentSearch=function(){g=true;
+var z={countryCode:a.Global.countryCode,languageCode:a.Global.langCode};
+var y=a.Global.guestapiurl+"/web/resmodule/recent-search";
+c.ajax({url:y,data:z,type:"GET",dataType:"json",cache:false}).done(function(E,A,C){var D=E.formParameters;
+if(D){for(var B=0;
+B<D.length;
+B++){e[B+1]={valid:true,params:D[B]}
+}s=true
+}else{g=false;
+s=false
+}}).fail(function(A){g=false
+})
+};
+this.getRecentSearchParams=function(){var y={};
+for(var z=1;
+z<e.length;
+z++){if(e[z].valid==true){y=e[z].params;
+break
+}}return y
+};
+this.getAllRecentSearches=function(){return e.slice(1)
+};
+this.showRatesFrom=function(F,y,E){var A=F.checkInDate;
+var D=F.checkOutDate;
+var B=false;
+try{A=_sape.utils.getDateFromStr(A);
+D=_sape.utils.getDateFromStr(D);
+if(A&&D){A=(""+A.getFullYear()).slice(-2)+"-"+(A.getMonth()+1)+"-"+A.getDay();
+D=(""+D.getFullYear()).slice(-2)+"-"+(D.getMonth()+1)+"-"+D.getDay();
+var z=location.protocol+"//"+a.Global.hostname+a.Global.guestapi+"/"+a.Global.brandname+"/us/en/web/rates-from?languageCode="+a.Global.langCode+"&countryCode="+a.Global.countryCode+"&brandCode="+a.Global.brandCode+"&hotelcode="+a.Global.hotelCode+"&"+l;
+c.ajax({url:z,method:"GET",dataType:"json",cache:true}).done(function(J){var G=parseFloat(J.lowestPrice);
+if(y&&c(y)&&(G!==0)){var H=c("<span class='currency'>").text(J.currencySymbol);
+var K=c("<span class='currency'>").text(" "+J.currencyCode);
+var I=c("<span class='price'>").text(J.lowestPrice);
+c(y).empty();
+c(y).append(H).append(I).append(K);
+B=true;
+E(B);
+if(c(window).width()>767){c(y).parent().parent().show()
+}}}).fail(function(G){if(y&&c(y)){B=false;
+E(B);
+if(c(window).width()>767){c(y).parent().parent().hide()
+}}})
+}else{E(B)
+}}catch(C){}};
+this.getUrlParams=function(){var y={};
+if(e[0]){if(e[0].valid==true){y=e[0].params
+}}return y
+};
+this.getRateCodes=function(E,F,G,I){var H=location.protocol+"//"+a.Global.hostname+"/gs-json/rateCode";
+var z={path:"default",countryCode:a.Global.countryCode,languageCode:a.Global.langCode};
+if(typeof(E)==="object"){var y="";
+if(E.hasOwnProperty("rateCode")){var D,A=[];
+if(typeof(E.rateCode)==="object"){D=E.rateCode
+}else{if(typeof(E.rateCode)==="string"){var C=E.rateCode.replace(/\s+/g,"").replace(/\W+/g,".");
+D=C.split(".")
+}}for(var B=0;
+B<D.length;
+B++){if(c.inArray(D[B],G)==-1){A.push(D[B])
+}}y=A.join(".")
+}if(y.length<1){F([],I);
+return
+}z={path:"getRate",rateCode:y,countryCode:a.Global.countryCode,languageCode:a.Global.langCode}
+}c.ajax({url:H,type:"GET",data:z,dataType:"json"}).done(function(J){F(J,I);
+if(I===true){w=true
+}}).fail(function(J){w=true
+})
+};
+this.getClosedSearch=function(z){var y=location.protocol+"//"+a.Global.hostname+"/ubeapi/"+a.Global.brandname+"/"+a.Global.brandCode+"/us/en/regionhotels.json";
+c.ajax({url:y,type:"GET",dataType:"json",cache:false}).done(function(A){z(A)
+})
+};
+this.defaultRatesAvailable=function(){if(w===true){return true
+}else{return false
+}};
+this.manageIata=function(A){var y="";
+if(A.hasOwnProperty("qIta")){y=A.qIta
+}else{if(A.hasOwnProperty("_PMID")){y=A._PMID
+}else{if(A.hasOwnProperty("icdv")){y=A.icdv
+}else{if(A.hasOwnProperty("_IATAno")){y=A._IATAno
+}}}}if(!y){var z=c.cookie("iataCookie");
+if(z){y=z
+}}if(y&&y.length){c.ajax({url:a.Global.guestapiurl+"/handleIATA",type:"GET",data:{iataNo:y},cache:true}).done(function(B){c("body").append(c(B.imageTags))
+});
+return y
+}};
+this.getFriendlyUrl=function(){var z=_sape.utils.urlParams();
+if(z&&Object.keys(z).length>0){h=true;
+z.qIta=a.Services.manageIata(z);
+z.brandCode=a.Global.brandCode;
+z.country=a.Global.countryCode;
+z.language=a.Global.langCode;
+if(z.hasOwnProperty("dp")){this.dp=z.dp
+}var y=a.Global.guestapiurl+"/resmodule/from-query";
+c.ajax({url:y,type:"GET",data:z,dataType:"json",cache:true}).done(function(B){var A=B.formParameters;
+if(A){if(A.length>0){e[0]={valid:true,params:A[0]};
+l=document.location.search;
+if(l[0]=="?"){l=l.slice(1)
+}}k=true
+}else{k=false;
+h=false
+}}).fail(function(A){h=false
+})
+}};
+this.getPrefillValues=function(z){var y={request:"loading",params:{}};
+if(h==true){if(k==true){return{request:"complete",params:this.getUrlParams(),source:"qparams"}
+}else{return y
+}}else{if(g==true){if(s==true){return{request:"complete",params:this.getRecentSearchParams(),source:"recentSearch"}
+}else{return y
+}}else{if(z){z()
+}return false
+}}};
+this.getRecentlyViewed=function(A){var z=c.cookie("recentlyViewed"),y;
+if(z){z=z.split("**");
+y=z.length;
+c.each(z,function(D,B){var C=a.Global.guestapiurl+"/web/hotelsummary";
+var E={hotelcode:B,country:a.Global.countryCode,language:a.Global.langCode};
+c.ajax({url:C,data:E,dataType:"json",cache:true}).done(function(F){y--;
+F.hotelCode=B;
+if(F.imageUrl){F.imageUrl=location.protocol+"//"+F.imageUrl
+}A(y,F)
+}).fail(function(){y--;
+A(y);
+console.log("Couldn't fetch data!")
+})
+})
+}};
+this.getHotelInfo=function(A,D){var C=A.split(","),y=0,B=0,z=false;
+c.each(C,function(G,E){var F=a.Global.guestapiurl+"/web/hotelsummary";
+var H={hotelcode:E,country:a.Global.countryCode,language:a.Global.langCode};
+c.ajax({url:F,data:H,dataType:"json",cache:true}).done(function(I){if(I){y++
+}else{B++
+}if(I.imageUrl){I.imageUrl=location.protocol+"//"+I.imageUrl
+}if(y+B===C.length){z=true
+}D(y,I,z)
+}).fail(function(){B++;
+if(y+B===C.length){z=true
+}D(f,f,z);
+console.log("Couldn't fetch data!")
+})
+})
+};
+this.getHotelCodes=function(z,A){var y=a.Global.guestapiurl+z;
+c.ajax({url:y,dataType:"json",cache:true}).done(function(B){A(B.hotelCodes)
+})
+};
+this.destSuggest=function(y,B){var z=a.Global.guestapiurl+"/web/suggestions";
+var A={country:a.Global.countryCode,language:a.Global.langCode,brand:a.Global.brandname};
+n=c(y).val();
+c(y).autocomplete({source:function(D,C){D.term=_sape.utils.trim(D.term);
+if(D.term&&(D.term.length>2)){if(D.term!==n){if(o&&o.readyState<4){console.log("cancelling");
+o.abort()
+}A.query=D.term;
+o=c.ajax({type:"GET",url:z,data:A}).done(function(E){r=E.filteredSuggestionList;
+n=D.term;
+C(E.filteredSuggestionList)
+})
+}else{C(r)
+}}else{if((D.term==="")&&(D.term.length===0)){C(e.slice(1))
+}else{c(y).autocomplete("close")
+}}},minLength:0,autoFocus:true,select:function(C,D){if(D.item.params){B(D.item.params);
+n=D.item.value=D.item.params.destination
+}else{B(D.item.label)
+}},delay:500}).data("ui-autocomplete")._renderItem=function(C,D){if(D.params){return c("<li>").append(c("<a>").append(c("<div>").addClass("dest-sugg").append(D.params.destination)).append(c("<span>").addClass("date-sugg").append(D.params.checkInDate)).append(" to ").append(c("<span>").addClass("date-sugg").append(D.params.checkOutDate))).appendTo(C)
+}else{return c("<li>").append(c("<a>").text(D.label)).appendTo(C)
+}};
+c(y).focus(function(){c(this).data("ui-autocomplete").search(c(this).val())
+});
+c(y).keyup(function(){B(c(this).val())
+})
+};
+this.searchResults=function(z,A){var y=a.Global.guestapiurl+"/web/resmodule/search-results";
+c.ajax({url:y,type:"GET",data:z,dataType:"json",cache:true}).done(function(B){if(A){A(B)
+}else{c(location).attr("href",B.redirectURL)
+}})
+};
+this.searchRoomsRates=function(z){var y=a.Global.guestapiurl+"/web/resmodule/room-rates";
+c.ajax({url:y,type:"GET",data:z,dataType:"json",cache:true}).done(function(A){c(location).attr("href",A.redirectURL)
+})
+};
+this.getPackages=function(z,A,y){c.ajax({url:a.Global.guestapiurl+"/web/hotelpackages",type:"GET",dataType:"json",data:z,cache:true}).done(function(B){c(".dvLoading").hide();
+A(B)
+}).fail(function(){y()
+})
+};
+this.guestPayment=function(z){var y=a.Global.guestapiurl+"/web/resmodule/guest-and-payment-info";
+c.ajax({url:y,type:"GET",data:z,dataType:"json",cache:true}).done(function(A){c(location).attr("href",A.redirectURL)
+})
+};
+this.getResDirect=function(B){c.support.cors=true;
+if(!B){B=function(){c.noop()
+}
+}var y=null;
+if(a.Global.getCookie("iataCookie",0)){y=that.getCookie("iataCookie",0)
+}var z="4";
+var A={slot:z,hotelMnemonic:a.Global.hotelCode,locale:a.Global.langCode,brand:a.Global.brandCode};
+if(checkViewPort()=="mobile"){A.mobilePhoneNumber=true
+}if(y!=f&&y!=null&&y!=""){A.pmid=y
+}c.ajax({url:a.Global.guestapiurl+"/web/resDirect",type:"GET",dataType:"json",data:A,cache:true}).done(function(E){var D=E.serviceCenter.number;
+var C=E.serviceCenter.message;
+B(D,C)
+}).fail(function(C,D,E){})
+};
+this.getWeatherStatus=function(A){if(q=="hoteldetail"){var y=a.Global.guestapiurl+"/weather";
+var z={hotelCode:a.Global.hotelCode,unit:"C"};
+c.ajax({url:y,type:"GET",data:z,dataType:"json",cache:true}).done(function(D){c(".dvLoading").hide();
+var B=D.current.tempC;
+var C=D.current.icon;
+var E=D.current.conditions;
+A(B,E,C)
+})
+}};
+this.getUserInfo=function(B){var A=a.Global.countryCode;
+var z=a.Global.langCode;
+if(z){z=z.toLowerCase()
+}var y="https://"+a.Global.hostname+"/gs-json/"+A+"/"+z+"/getUserInfo";
+c.ajax({url:y,type:"GET",dataType:"json",xhrFields:{withCredentials:true}}).done(function(C){if(C.walletProfile){a.Global.rewardsClubNumber=C.walletProfile.priorityClubNumber;
+a.Browser_properties.ssoState=C.loginStatus.toLowerCase()
+}a.Services.userflag=true
+}).error(function(C){a.Services.userflag=true;
+a.Global.rewardsClubNumber="";
+a.Global.ssoState="anonymous"
+})
+};
+this.init=function(){this.getFriendlyUrl();
+this.getRecentSearch();
+this.getUserInfo();
+_sape.controls.internalLink("site-int-link")
+}
+}a.Services=new b;
+a.Services.init()
+}catch(d){console.log(d)
+}})(window.IHG=window.IHG||{},jQuery);
+(function(l,h,i){try{var r=h("#page-type").val()||window.pageType,n=typeof(resOptions.otherConfig.hidedesktoptabs)==="undefined"?false:resOptions.otherConfig.hidedesktoptabs;
+var z=_sape.utils.getDateSansTime();
+var j=24*60*60*1000;
+var q=_sape.utils.getDateSansTime();
+q.setDate(z.getDate()-1);
+var B=_sape.utils.getDateSansTime();
+B.setDate(z.getDate()+1);
+var t=2,w=1,o=0;
+var g=[];
+var c=[];
+var A={dest:"#book .dest-input",destLabel:"#book .open-search > label",checkin:"#book .check-in",checkout:"#book .check-out",rooms:"#book .rooms-input",adults:"#book .adults-input",children:"#book .children-input",ratePref:"#book .rate-pref",locationIcon:"#book .search-icon",corporateNumber:"#book .corporate-id-input",iata:"#book .iata-input",groupCode:"#book .group-code-input",hotelSearch:"#book .htl-search",errorMessage:"#book .error-msg",formDates:"#book .dates",formCorporateNo:"#book .corporate-id",formIataNo:"#book .iata-id",formGroupCode:"#book .group-code",moreOptions:"#book .more-less-opt",expandOptions:"#book .expand-opt",importantNote:"#book .important-note"};
+var y={dest:"#new-search .dest-input",destLabel:"#new-search .open-search > label",checkin:"#new-search .check-in",checkout:"#new-search .check-out",rooms:"#new-search .rooms-input",adults:"#new-search .adults-input",children:"#new-search .children-input",ratePref:"#new-search .rate-pref",locationIcon:"#new-search .search-icon",corporateNumber:"#new-search .corporate-id-input",iata:"#new-search .iata-input",groupCode:"#new-search .group-code-input",hotelSearch:"#new-search .htl-search",errorMessage:"#new-search .error-msg",formDates:"#new-search .dates",formCorporateNo:"#new-search .corporate-id",formIataNo:"#new-search .iata-id",formGroupCode:"#new-search .group-code",moreOptions:"#new-search .more-less-opt",expandOptions:"#new-search .expand-opt",importantNote:"#new-search .important-note"};
+var d={manageResSlide:".manage-res",manageResTab:"#manage"};
+var s={recentViewedNav:"#reservation .recent"};
+function k(W,O){var L,ae=_sape.utils.getDateSansTime(),R=_sape.utils.getDateSansTime(),T="01",ac="01",F="00",aa="6CBARC",S,N,M,U,Z={},I=false,G=["","",""],Y=[],X=typeof(resOptions.dateConfig.dateRequired)==="undefined"?false:resOptions.dateConfig.dateRequired,K=typeof(resOptions.roomConfig.showRooms)==="undefined"?true:resOptions.roomConfig.showRooms,e=typeof(resOptions.roomConfig.maxRooms)==="undefined"?9:resOptions.roomConfig.maxRooms,V=typeof(resOptions.rateConfig.showRatePref)==="undefined"?true:resOptions.rateConfig.showRatePref,E=typeof(resOptions.rateConfig.rateCodes)==="undefined"?"":resOptions.rateConfig.rateCodes,P=typeof(resOptions.otherConfig.showCorpID)==="undefined"?true:resOptions.otherConfig.showCorpID,H=typeof(resOptions.otherConfig.showIATA)==="undefined"?true:resOptions.otherConfig.showIATA,ab=typeof(resOptions.otherConfig.showAdultChild)==="undefined"?true:resOptions.otherConfig.showAdultChild;
+var J=this;
+this.ns=O;
+R=(resOptions.dateConfig.minStay)?new Date(ae.getTime()+resOptions.dateConfig.minStay*j):new Date(R.setDate(ae.getDate()+1));
+var Q=l.Global.countryCode;
+var ad=l.Global.langCode||"en";
+if(ad=="en"&&Q=="gb"){ad="gb-en"
+}this.configure=function(){if(K===false){h(J.roomsId).parent().hide()
+}if(ab===false){h(J.adultsId).parent().hide();
+h(J.childrenId).parent().hide()
+}if(P===false){h(J.corporateId).parent().hide()
+}if(H===false){h(J.iataId).parent().hide()
+}if(V===false){h(J.ratePrefId).parent().hide()
+}if(X===true){var af=h(this.checkinId);
+h(af).each(function(ai,aj){var ah=h(aj).siblings("label").text();
+h(aj).siblings("label").text(ah+" *")
+});
+var ag=h(this.checkoutId);
+h(ag).each(function(ah,ai){var aj=h(ai).siblings("label").text();
+h(ai).siblings("label").text(aj+" *")
+})
+}else{var af=h(this.checkinId);
+h(af).each(function(ai,aj){var ah=h(aj).siblings("label").text();
+h(aj).siblings("label").text(ah.replace("*",""))
+});
+var ag=h(this.checkoutId);
+h(ag).each(function(ah,ai){var aj=h(ai).siblings("label").text();
+h(ai).siblings("label").text(aj.replace("*",""))
+})
+}h(J.checkinId).attr("placeholder",h.datepicker.regional[ad].fromPlaceholder);
+h(J.checkoutId).attr("placeholder",h.datepicker.regional[ad].fromPlaceholder);
+h("#UHF_password").attr("type","password");
+_sape.controls.numStepper(this.adultsId,1,20,true,2,this.updateAdults);
+_sape.controls.numStepper(this.childrenId,0,20,true,2,this.updateChildren);
+_sape.controls.numStepper(this.roomsId,1,e,true,2,this.updateRooms,this.errorHandler,errorMessages.maxRooms);
+Z=new _sape.controls.datepicker(this.checkinId,this.checkoutId,this.updateCheckIn,this.updateCheckOut)
+};
+this.fillResForm=function(ai,ah){if(ai.destination){L=decodeURIComponent(ai.destination||"");
+L=L.replace(/[^a-zA-Z0-9\,\.]/g," ");
+h(this.destId).val(L)
+}if(ai.checkInDate){ae=_sape.utils.getDateFromStr(ai.checkInDate)
+}Z.setCheckinDate(ae);
+if(ai.checkOutDate){R=_sape.utils.getDateFromStr(ai.checkOutDate);
+if(!R||R<Z.getMinCheckout()){R=B
+}}Z.setCheckoutDate(R);
+if(ai.numberOfRooms){ac=("0"+ai.numberOfRooms).slice(-1*2);
+h(this.roomsId).val(ac)
+}if(ai.numberOfAdults){T=("0"+ai.numberOfAdults).slice(-1*2);
+h(this.adultsId).val(T)
+}if(ai.numberOfChildren){F=("0"+ai.numberOfChildren).slice(-1*2);
+h(this.childrenId).val(F)
+}if(ai.iata){S=ai.iata;
+h(this.iataId).val(ai.iata);
+if(ah==="qparams"&&!O){h(J.iataId).attr("readonly","readonly")
+}}if(ai.corporateNumber){M=ai.corporateNumber;
+h(this.corporateId).val(ai.corporateNumber)
+}if(ai.groupCode&&r!=="brand"&&!O){N=ai.groupCode;
+h(this.groupCodeId).val(ai.groupCode)
+}if(ai.rateCode){var ag=ai.rateCode.split(/\W/);
+if(ag&&ag.length){if(ah=="recentSearch"){for(var af=Y.length-1;
+af>-1;
+af--){if(h.inArray(ag[af],Y)!==-1){G[t]=ag[af];
+J.setRatePref();
+break
+}}}else{G[t]=ag[ag.length-1]
+}}}};
+this.setRsValues=function(af){if(typeof(af)==="string"){L=af
+}else{if(typeof(af)==="object"){J.fillResForm(af,"recentSearch")
+}}};
+this.updateCheckIn=function(af,ag){if(typeof(af)==="string"){ae=new Date(ag.currentYear,ag.currentMonth,parseInt(ag.currentDay,10))
+}else{if(typeof(af)==="object"){ae=new Date(af.getFullYear(),af.getMonth(),af.getDate())
+}}};
+this.updateCheckOut=function(af,ag){if(typeof(af)==="string"){R=new Date(ag.currentYear,ag.currentMonth,parseInt(ag.currentDay,10))
+}else{if(typeof(af)==="object"){R=new Date(af.getFullYear(),af.getMonth(),af.getDate())
+}}};
+this.updateAdults=function(af){T=af
+};
+this.updateChildren=function(af){F=af
+};
+this.updateRooms=function(af){ac=af
+};
+this.saveRateCodes=function(ai,ag){for(var af=0;
+af<ai.length;
+af++){if(h.inArray(ai[af].code,g)===-1){g.push(ai[af].code);
+c.push(ai[af])
+}}if(ag==true){Y=g.slice(0);
+G[o]=Y[0]
+}h(J.ratePrefId).children("option").remove();
+for(var af=0,ah=false;
+af<c.length;
+af++){h("<option>").attr("value",c[af].code).text(c[af].longName).appendTo(J.ratePrefId);
+if(c[af].preferredRate==true&&ah==false){G[w]=c[af].code;
+ah=true
+}}J.setRatePref()
+};
+this.setRatePref=function(){for(var af=0;
+af<G.length;
+af++){if(G[af]&&G[af].length>0){aa=G[af];
+h(J.ratePrefId).val(G[af])
+}}};
+this.formSearchParams=function(){var af={languageCode:l.Global.langCode,countryCode:l.Global.countryCode,brandCode:l.Global.brandCode,checkInDate:Z.getStrFromDate(ae),checkOutDate:Z.getStrFromDate(R)};
+if(aa!==i&&aa!==""&&V){af.rateCode=aa;
+af.freeNightRateCode=aa
+}if(T!==i&&T!==""&&ab){af.numberOfAdults=T
+}if(F!==i&&F!==""&&ab){af.numberOfChildren=F
+}if(ac!==i&&ac!==""&&K){af.numberOfRooms=ac
+}if(M!==i&&M!==""&&P){af.corporateNumber=M
+}if(S!==i&&S!==""&&H){af.iata=S
+}if(N!==i&&N!==""&&r!=="brand"){af.groupCode=N
+}if(r=="brand"||O){af.destination=L;
+if(resOptions.rateConfig.marketingMode){af.marketingMode=resOptions.rateConfig.marketingMode
+}if(resOptions.otherConfig.showStrikeThrough){af.showStrikeThrough=resOptions.otherConfig.showStrikeThrough
+}if(resOptions.otherConfig.sortOrder){af.sortOrder=resOptions.otherConfig.sortOrder
+}if(resOptions.rateConfig.optionalRateCodes.length>0){af["&optionalRateCodes"]=resOptions.rateConfig.optionalRateCodes
+}if(resOptions.rateConfig.requiredRateCodes.length>0){af["&requiredRateCodes"]=resOptions.rateConfig.requiredRateCodes
+}l.Services.searchResults(af)
+}else{af.hotelCode=l.Global.hotelCode;
+l.Services.searchRoomsRates(af)
+}};
+this.geocodeLocation=function(af){var ak=new google.maps.Geocoder();
+var al=new google.maps.LatLng(af.coords.latitude,af.coords.longitude);
+var aj=["locality","administrative_area_level_2","administrative_area_level_1","country"];
+var ai=false;
+var ah={locality:"long_name",administrative_area_level_2:"long_name",administrative_area_level_1:"short_name",country:"long_name"};
+var ag=[];
+ak.geocode({latLng:al},function(ap,an){if(an==google.maps.GeocoderStatus.OK){if(ap.length){var aq=ap[0];
+for(var ao=0;
+ao<aq.address_components.length;
+ao++){var am=aq.address_components[ao];
+h.grep(am.types,function(ar){if(ar==="administrative_area_level_2"&&ai===true){return
+}if(h.inArray(ar,aj)!==-1){ag.push(am[ah[ar]]);
+if(ar==="locality"){ai=true
+}}})
+}L=ag.join(",");
+h(J.destId).val(L)
+}}})
+};
+this.errorHandler=function(af){h(J.errorMessage).show();
+h(J.errorMessage).html(af)
+};
+this.errorCheck=function(){if(r=="brand"||O){if((L==="")||(L===i)){J.errorHandler(errorMessages.openSearchDest);
+return false
+}}if(X&&(!ae||isNaN(ae))&&(!R||isNaN(R))){J.errorHandler(errorMessages.bothDates);
+return false
+}else{if(X&&(!ae||isNaN(ae))){J.errorHandler(errorMessages.checkInDate);
+return false
+}else{if(X&&(!R||isNaN(R))){J.errorHandler(errorMessages.checkOutDate);
+return false
+}else{return true
+}}}};
+var D=function(af){var ag=h(af);
+h(ag).each(function(ai,am){var ak=h(am).siblings("label").text();
+var ah=h(am).siblings("label").find("a");
+var aj=h(ah).data("content");
+var an=af.replace(/[\s+#.]/g,"");
+h(ah).attr("data-content","").attr("data-toggle","");
+var al='<div class="popover" id="'+an+'" role="tooltip"><div class="arrow"></div><h3 class="popover-title">'+ak+'<span class="close">&times;</span></h3><div class="popover-content">'+aj+"</div></div>";
+h(ah).parent().append(al);
+h(ah).on("click",function(ao){h("#"+an).addClass("bottom fade in");
+h("#"+an).css({display:"block"}).offset({top:h(ah).offset().top+h(ah).height(),left:h(ah).offset().left-h(ah).siblings(".popover").width()/2+h(ah).width()});
+h("#"+an).find(".close").on("click",function(){h("#"+an).hide()
+})
+})
+})
+};
+this.setUiHandlers=function(){h(this.locationIcon).click(function(){if(navigator.geolocation){navigator.geolocation.getCurrentPosition(J.geocodeLocation,function(){})
+}});
+if(r==="hoteldetail"&&!O){h(this.destLabel).text(l.Global.hotelname)
+}h(this.ratePrefId).change(function(){aa=h("option:selected",this).attr("value")
+});
+h(this.formDates+" .cal-icon").click(function(){h(h(this).parent().find("input")).datepicker("show")
+});
+h(this.moreOptions).click(function(){h(J.expandOptions).slideToggle(250);
+h(this).toggleClass("less-opt-opn");
+h(".more-opt , .less-opt",this).toggle();
+h(".arrow-icon",this).toggleClass("open");
+h(J.importantNote+" .best-available").toggle()
+});
+h(this.destId+","+this.checkinId+","+this.checkoutId+","+this.locationIcon).on("click focus",function(){if(h(J.expandOptions).css("display")=="none"){h(J.expandOptions).slideDown(250);
+h(".more-opt",J.moreOptions).hide();
+h(".less-opt",J.moreOptions).show();
+h(J.moreOptions).addClass("less-opt-opn");
+h(".arrow-icon",J.moreOptions).addClass("open");
+h(J.importantNote+" .best-available").show()
+}});
+h(this.roomsId+","+this.adultsId+","+this.childrenId).keyup(function(af){if(af.keyCode==13){h(this).trigger("change")
+}});
+h(this.checkinId).change(function(){var af=h(this).val();
+af=_sape.utils.trim(af);
+if(af){var ag=_sape.utils.getDateFromStr(af);
+if(!ag||ag<Z.getMinCheckin()){ag=z
+}Z.setCheckinDate(ag);
+Z.setCheckoutRange(ae);
+Z.setValidCheckout(ae)
+}else{h(this).val("");
+ae=0
+}});
+h(this.checkoutId).change(function(){var af=h(this).val();
+af=_sape.utils.trim(af);
+if(af){var ag=_sape.utils.getDateFromStr(af);
+if(!ag||ag<Z.getMinCheckout()){ag=B
+}Z.setCheckoutDate(ag);
+if(ae){Z.setValidCheckout(ae)
+}}else{h(this).val("");
+R=0
+}});
+h(this.checkinId+","+this.checkoutId).keyup(function(af){if(af.keyCode===27){h(this).blur()
+}});
+h(this.iataId).keyup(function(){S=h(this).val()
+});
+h(this.groupCodeId).keyup(function(){N=h(this).val()
+});
+h(this.corporateId).keyup(function(){M=h(this).val()
+});
+h(this.hotelSearch).click(function(){var af={};
+if(J.errorCheck()){h(J.errorMessage).hide();
+af=J.formSearchParams()
+}});
+h(this.checkinId+","+this.checkoutId).focus(function(){if(checkViewPort()!=="desktop"){h(this).blur()
+}});
+D(this.corporateId);
+D(this.iataId);
+D(this.groupCodeId);
+_sape.utils.checkManualEntry(J.checkinId);
+_sape.utils.checkManualEntry(J.checkoutId);
+_sape.utils.checkManualEntry(J.adultsId);
+_sape.utils.checkManualEntry(J.childrenId);
+_sape.utils.checkManualEntry(J.roomsId);
+h(window).resize(function(){_sape.utils.checkManualEntry(J.checkinId);
+_sape.utils.checkManualEntry(J.checkoutId);
+_sape.utils.checkManualEntry(J.adultsId);
+_sape.utils.checkManualEntry(J.childrenId);
+_sape.utils.checkManualEntry(J.roomsId)
+})
+};
+this.setSelectors=function(af){this.destId=af.dest;
+this.destLabel=af.destLabel;
+this.checkinId=af.checkin;
+this.checkoutId=af.checkout;
+this.roomsId=af.rooms;
+this.adultsId=af.adults;
+this.childrenId=af.children;
+this.ratePrefId=af.ratePref;
+this.locationIcon=af.locationIcon;
+this.iataId=af.iata;
+this.groupCodeId=af.groupCode;
+this.corporateId=af.corporateNumber;
+this.errorMessage=af.errorMessage;
+this.formDates=af.formDates;
+this.formCorporateNo=af.formCorporateNo;
+this.formIataNo=af.formIataNo;
+this.formGroupCode=af.formGroupCode;
+this.moreOptions=af.moreOptions;
+this.expandOptions=af.expandOptions;
+this.importantNote=af.importantNote;
+this.hotelSearch=af.hotelSearch
+};
+this.noPrefill=function(){if(I===false){Z.setCheckinDate(ae);
+Z.setCheckoutDate(R);
+I=true
+}};
+this.updateWeather=function(af,aj,ag){var ah=J.convertorTemp(af);
+var ai="icon-weather-0"+ag;
+h(".temp").html(ah+"<sup>o</sup><sub>F</sub> / "+af+"<sup>o</sup><sub>C</sub>");
+h(".description").text(aj);
+h(".weath").addClass(ai)
+};
+this.convertorTemp=function(af){var ag=af*9/5+32;
+return(Math.round(ag))
+};
+this.init=function(){this.setSelectors(W);
+this.configure();
+this.setUiHandlers();
+if(!O){if(E&&E.length){l.Services.getRateCodes({rateCode:E},J.saveRateCodes,Y,true)
+}else{l.Services.getRateCodes("default",J.saveRateCodes,Y,true)
+}}else{setTimeout(function(){J.saveRateCodes([],true)
+},1000)
+}var ag=function(ai){if(ai===false){h(".starting-price-wrap").hide()
+}else{h(".starting-price-wrap").show();
+h(".starting-price-wrap,.reservation_sticky").css("width","50%")
+}};
+var ah=function(){var ai="";
+if(l.Global.city!==null&&l.Global.city!==i&&l.Global.city!==""){ai=l.Global.city
+}if(l.Global.state!==null&&l.Global.state!==i&&l.Global.state!==""){ai=ai+","+l.Global.state
+}if(l.Global.country!==null&&l.Global.country!==i&&l.Global.country!==""){ai=ai+","+l.Global.country
+}return ai
+};
+var af=setInterval(function(){var aj=l.Services.defaultRatesAvailable();
+var ai=l.Services.getPrefillValues(J.noPrefill);
+if(ai.request=="complete"&&aj){clearInterval(af);
+J.fillResForm(ai.params,ai.source);
+if(h(J.destId)[0]){l.Services.destSuggest(J.destId,J.setRsValues)
+}if(ai.source==="qparams"){if(r==="hoteldetail"&&!O){l.Services.showRatesFrom(ai.params,".hi-hd-info-price span",ag)
+}if(!O){l.Services.getRateCodes(ai.params,J.saveRateCodes,Y,false)
+}else{setTimeout(function(){J.saveRateCodes([],false)
+},1000)
+}}if(!O&&r==="hoteldetail"){h(".search-hotel").click(function(al){al.preventDefault();
+var am=ai.params,ak,an;
+if(!am.checkInDate||_sape.utils.getDateFromStr(am.checkInDate)<q){ak=q
+}else{ak=_sape.utils.getDateFromStr(am.checkInDate)
+}if(!am.checkOutDate||_sape.utils.getDateFromStr(am.checkOutDate)<z){an=z
+}else{an=_sape.utils.getDateFromStr(am.checkOutDate)
+}if(h.isEmptyObject(am)){window.location=h(this).attr("href")
+}else{am.destination=ah();
+am.languageCode=l.Global.langCode;
+am.countryCode=l.Global.countryCode;
+am.brandCode=l.Global.brandCode;
+am.checkInDate=Z.getStrFromDate(ak);
+am.checkOutDate=Z.getStrFromDate(an);
+l.Services.searchResults(am)
+}})
+}}},500);
+l.Services.getWeatherStatus(this.updateWeather)
+}
+}function m(e){var E=[];
+var D=this;
+this.saveRecentHotel=function(F,G){if(G){E[F]=G;
+E[F].averageOverallRating=E[F].averageOverallRating?Math.round(parseFloat(E[F].averageOverallRating)*10):0
+}if(F===0){l.RecentlyViewed.addRecentHotels()
+}};
+this.addRecentHotels=function(){h(D.recentViewedNav).show();
+v();
+if(h("#recent-tpl")[0]){var F=h("#recent-tpl").html();
+var H=Handlebars.compile(F);
+var G=H(E);
+G=G.replace(/^\s+|\s+$/g,"");
+h(".tab-content #recent").html(G)
+}h(".hotel-ctr .close-button").click(function(){l.RecentlyViewed.deleteRecentHotel(h(this))
+})
+};
+this.deleteRecentHotel=function(G){h(G).parent().remove();
+var F=[];
+h("#recent .hotel-ctr").each(function(){F.push(h(this).find(".hotel-info .htl-code").text())
+});
+F=F.reverse();
+h.cookie("recentlyViewed",null,{expires:-5,path:"/",domain:location.host});
+if(F.length>0){h.cookie("recentlyViewed",F.join("**"),{expires:365,path:"/",domain:location.host})
+}else{h(D.recentViewedNav).hide();
+v();
+h("a",h(D.resNav).first()).tab("show")
+}};
+this.setSelectors=function(F){this.recentViewedNav=F.recentViewedNav
+};
+this.init=function(){this.setSelectors(s);
+l.Services.getRecentlyViewed(l.RecentlyViewed.saveRecentHotel)
+}
+}function f(e){var D=this;
+h.fn.pVal=function(){var E=h(this),F=E.eq(0).val();
+if(F==E.attr("placeholder")){return""
+}else{return F
+}};
+this.manageResError=function(E){if(h(".conf-res #number",E).pVal().trim()==""){h(".error-msg",E).text(errorMessages.confirmationNumber).show();
+return false
+}else{if(h(".last-name #last-name",E).pVal().trim()==""){h(".error-msg",E).text(errorMessages.lastName).show();
+return false
+}else{h(".error-msg",E).parent().hide();
+return true
+}}};
+this.manageReservation=function(E){h(E).submit()
+};
+this.setUiHandlers=function(){h(this.manageResSlide+" .header").click(function(){var E=h.cookie("uhf_userstate")||"ANONYMOUS";
+if(E==="IMPLICIT"||E==="ANONYMOUS"){h(".body-copy",h(this).parent()).slideToggle(400);
+h(".arrow-icon",this).parent().toggleClass("open-hdr");
+h(".arrow-icon",this).toggleClass("open")
+}else{window.location=h(".body-copy .form-fields form",D.manageResSlide).attr("action")
+}});
+h(".manage").click(function(E){E.preventDefault();
+var F=h.cookie("uhf_userstate")||"ANONYMOUS";
+if(F==="EXPLICIT"){window.location=h(".body-copy .form-fields form",D.manageResTab).attr("action")
+}});
+h(this.manageResTab+" .view-res ,"+this.manageResSlide+" .view-res").click(function(){var E=h(this).parent();
+if(D.manageResError(E)){D.manageReservation(E)
+}});
+h(".manage-res .rewards-copy .sign-in,#manage .rewards-copy .sign-in ").on("click",function(E){E.preventDefault();
+h("html, body").animate({scrollTop:0},{duration:"slow",complete:function(){UHF.showWallet()
+}})
+})
+};
+this.setSelectors=function(E){this.manageResSlide=E.manageResSlide;
+this.manageResTab=E.manageResTab
+};
+this.init=function(){this.setSelectors(e);
+this.setUiHandlers()
+}
+}var v=function(){resNav="#reservation .main-nav li";
+var E=0,D,e;
+e=h(resNav).find("a").first();
+h(e).tab("show")
+};
+l.BookNow=new k(A,false);
+l.BookNow.init();
+l.ManageReservation=new f(d);
+l.ManageReservation.init();
+if(r==="hoteldetail"){l.NewSearch=new k(y,true);
+l.NewSearch.init()
+}if(r==="brand"){l.RecentlyViewed=new m(s);
+l.RecentlyViewed.init()
+}h.fn.is_on_screen=function(){var E=h(window);
+var e={top:E.scrollTop(),left:E.scrollLeft()};
+e.right=e.left+E.width();
+e.bottom=e.top+E.height()-100;
+var D=this.offset();
+D.right=D.left+this.outerWidth();
+D.bottom=D.top+this.outerHeight()-100;
+return(!(e.right<D.left||e.left>D.right||e.bottom<D.top||e.top>D.bottom))
+};
+var C=function(){var e=window.innerWidth;
+if(e>768){h(".res-footer").hide();
+if(n==false){h("#reservation").show();
+h("#reservation .content").show();
+if(h("#reservation").is_on_screen()){h(".brandNavContainer .booknow").hide()
+}else{h(".brandNavContainer .booknow").show()
+}}else{h(".brandNavContainer .booknow").show()
+}if(h(window).scrollTop()>h("#reservation").offset().top+h("#reservation").height()-95){h(".brandNavContainer .booknow").show()
+}}else{if(n==true){h(".res-footer").show()
+}else{h(".res-footer").hide();
+h("#reservation").show()
+}if(h(window).scrollTop()>h("#reservation").offset().top+h("#reservation").height()-95){h(".res-footer").show()
+}}};
+var a=function(){window.addEventListener("load",function(){if(h("#reservation:visible").length>0){if(h("#reservation").is_on_screen()){h(".brandNavContainer .booknow").hide()
+}else{h(".brandNavContainer .booknow").show()
+}}},false);
+h(window).scroll(function(){var e=h("#reservation").offset().top+h("#reservation").height(),D=h(window).scrollTop();
+if(window.innerWidth>768){h(".res-footer").hide();
+e=e-95;
+if(D>=e){h(".brandNavContainer .booknow").show()
+}else{if(n==false){if(h("#reservation").is_on_screen()){h(".brandNavContainer .booknow").hide()
+}else{h(".brandNavContainer .booknow").show()
+}}}if(D==0&&n==true){h(".brandNavContainer .booknow").show()
+}}else{h(".brandNavContainer .booknow").hide();
+if(D>e){h(".res-footer").show();
+if(n==true){h("#reservation").not(".show").hide()
+}}else{if(n==false){h(".res-footer").hide()
+}}}});
+if(n==false){h(".brandNavContainer .booknow, .booknow .content .tile-desc .link").on("click",function(D){if(window.innerWidth>768){D.preventDefault();
+h(this).find("a").attr("href","javascript:void(0);");
+h("html, body").animate({scrollTop:h("#reservation").offset().top-110},"slow",function(){h(".brandNavContainer .booknow").hide()
+});
+v()
+}})
+}else{h(".brandNavContainer .booknow, .booknow .content .tile-desc .link").on("click",function(E){if(window.innerWidth>768){E.preventDefault();
+h(".expand-reservation").addClass("activeButton");
+h(this).find("a").attr("href","javascript:void(0);");
+var D=h("#reservation").offset().top+h("#reservation").height()-95;
+var F=h(window).scrollTop();
+if(F>D){h("#reservation").slideDown(400);
+h("html, body").animate({scrollTop:0},"slow")
+}else{h("#reservation").slideToggle(400);
+h("html, body").animate({scrollTop:0},"slow")
+}v()
+}})
+}h(".reservation_sticky, .booknow .content .tile-desc .link").on("click",function(){if(window.innerWidth<=768){h("#reservation").show();
+h("#reservation").addClass("show");
+h(".expand-reservation").addClass("activeButton");
+h("#reservation .content").show();
+h("#reservation .expand-reservation .arrow-icon").toggleClass("open");
+v();
+h("html, body").animate({scrollTop:h("#reservation").offset().top},function(){h("#reservation").show();
+h(".res-footer").hide();
+setTimeout(function(){h("#reservation").removeClass("show")
+},1000)
+})
+}})
+};
+var b=function(){if(checkViewPort()!=="mobile"){h("#reservation").css("height",h(".hero-section .tile-image").css("height"))
+}};
+var u=function(){h(".expand-reservation").click(function(){h("#reservation .content").slideToggle(400);
+h(".arrow-icon",this).toggleClass("open");
+v()
+});
+h(".hero-section .tile-image img").load(function(){b()
+});
+h(window).resize(function(){b();
+C();
+if(checkViewPort()==="mobile"&&h("#manage").hasClass("active")){h("#manage,#book").toggleClass("active");
+h("#reservation .main-nav li a[href='#book'],#reservation .main-nav li a[href='#manage']").parent().toggleClass("active")
+}});
+if(r==="hoteldetail"){l.Global.recentlyViewedCookie()
+}if(h("#reservation")){C();
+a()
+}};
+u()
+}catch(x){console.log(x)
+}})(window.IHG=window.IHG||{},jQuery);
+(function(a,c,d){var b=(function(){c(document).ready(function(){var f="";
+c(".interact").each(function(){var g=c(this).parents(".offers-container");
+if(g.length==0){var h=c(this).data("slotid");
+if(h!==d&h!==""){f=f+c(this).data("slotid")+","
+}}});
+if(f!=""){a.Services.ihgofferservice(f,e)
+}});
+function e(g){var h={};
+g.offers.forEach(function(j,i){if(j.offerCopy.trim().length>0){if(h[j.interactionPointName]===d){var k=[];
+k.push(j.offerCopy);
+h[j.interactionPointName]=k
+}else{h[j.interactionPointName].push(j.offerCopy)
+}}});
+var f=1;
+c(".interact").each(function(){var j=c(this).parents(".offers-container");
+if(j.length==0){var l=h[c(this).data("slotid")];
+if(l!==null&&l!==d){if(c(this).parents().eq(4).hasClass("flexslider")){var o=c(this).parents().eq(4);
+var n=c(this).parents("ul");
+if(l.length>1){for(var m=0;
+m<l.length;
+m++){c(n).append("<li>"+l[m]+"</li>")
+}c(this).parents("li").remove();
+c(o).children(".flex-direction-nav").remove();
+c(o).children(".flex-control-nav").remove();
+c(o).removeData("flexslider");
+c(o).flexslider()
+}else{c(this).html(l[0])
+}}else{if(l.length>1){var k="";
+k=k+'<div class="hero-carousel"><div class="flexslider"><ul class="slides">';
+for(var m=0;
+m<l.length;
+m++){var k=k+"<li>"+l[m]+"</li>"
+}k=k+"</ul></div></div>";
+c(this).html(k)
+}else{c(this).html(l[0])
+}}}}});
+responsiveImagefiller();
+a.ExpandRow.execute()
+}})()
+})(window.IHG=window.IHG||{},jQuery);

@@ -6,6 +6,9 @@
 <title>HOTEL</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"  />
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
   body {
@@ -16,8 +19,13 @@
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    width:100% ;
+	 background-size: 100%,100%;
 
+  }
+  img{
+	width:200px;
+	height:200px;
+	position: centre;
   }
   h2 {
       font-size: 24px;
@@ -151,7 +159,7 @@
 
 .panel-footer .btn {
     margin: 15px 0;
-    background-color: #ff0000;
+    background-color: #00BFFF;
     color: #fff;
 }
   </style>
@@ -180,19 +188,21 @@
 </nav>
 
 <div class="container-fluid">
-            <button type="button" class="btn btn-success btn-block"  data-toggle="modal" data-target="#ADDHOTEL">ADD HOTEL</button><br>
+
+		   <button type="button" data-toggle="modal" data-target="#addhotel" class="btn btn-primary btn-block">Add Hotels</button><br>
     <div class="row">
         <div class="col-xs-6 col-md-3">
             
             <div class="panel status panel-success">
                 <div class="panel-heading">
-                    <h1 class="panel-title text-center">NAME OF HOTEL FROM DATABASE</h1>
+                    <h1 class="panel-title text-center">HOLIDAY INN</h1>
                 </div>
-                <div class="panel-body text-center">                        
-                    <strong>GET IMAGE FROM THE DATABASE</strong>
+                <div class="panel-body text-center">  
+					<strong><img src="holiday-inn-logo.png" alt="Holiday inn"></strong>
+                    
                 </div>
                  <div class="panel-footer text-center">     
-                      <button class="btn btn-lg">Edit</button>  
+                      <button class="btn btn-lg">Access</button>  
                       <button class="btn btn-lg">Delete</button>                  
                     
                 </div>
@@ -202,14 +212,14 @@
             
             <div class="panel status panel-success">
                 <div class="panel-heading">
-                    <h1 class="panel-title text-center">NAME OF HOTEL FROM DATABASE</h1>
+                    <h1 class="panel-title text-center">EASY HOTEL</h1>
                 </div>
                 <div class="panel-body text-center">                        
-                    <strong>GET IMAGE FROM THE DATABASE</strong>
+                    <strong><img src="easyhotel.png" alt="Holiday inn"></strong>
                 </div>
 
                 <div class="panel-footer text-center">     
-                      <button class="btn btn-lg">Edit</button>  
+                      <button class="btn btn-lg">Access</button>  
                       <button class="btn btn-lg">Delete</button>                  
                     
                 </div>
@@ -220,13 +230,13 @@
             
             <div class="panel status panel-success">
                 <div class="panel-heading">
-                    <h1 class="panel-title text-center">NAME OF HOTEL FROM DATABASE</h1>
+                    <h1 class="panel-title text-center">ICON HOTEL</h1>
                 </div>
                 <div class="panel-body text-center">                        
-                    <strong>GET IMAGE FROM THE DATABASE</strong>
+                    <strong><img src="icon.png" alt="Holiday inn"></strong>
                 </div>
                 <div class="panel-footer text-center">     
-                      <button class="btn btn-lg">Edit</button>  
+                      <button class="btn btn-lg">Access</button>  
                       <button class="btn btn-lg">Delete</button>                  
                     
                 </div>
@@ -237,21 +247,68 @@
             
             <div class="panel status panel-success">
                 <div class="panel-heading">
-                    <h1 class="panel-title text-center">NAME OF HOTEL FROM DATABASE</h1>
+                    <h1 class="panel-title text-center">Hilton</h1>
                 </div>
                 <div class="panel-body text-center">                        
-                    <strong>GET IMAGE FROM THE DATABASE</strong>
+                    <strong><img src="hilton.png" alt="Holiday inn"></strong>
                 </div>
                 <div class="panel-footer text-center">     
-                      <button class="btn btn-lg">Edit</button>  
+                      <button class="btn btn-lg">Access</button>  
                       <button class="btn btn-lg">Delete</button>                  
                     
                 </div>
             </div>
 
-        </div>   
+        </div>  
+			
     </div>
 
+	
+	<div class="modal fade" id="addhotel" role="dialog" >
+    <div class="modal-dialog">
+	      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create New Hotel</h4>
+        </div>
+		
+        <div class="modal-body">
+		 <div  id="info" class="alert alert-warning col-sm-12"></div>
+	<div class="form-group">
+	<div class="col-sm-12">
+	<label for="hotel name">Hotel Name</label>
+	<input class="form-control" type= "text" name = "hoteln" placeholder="Hotel Name"><br>
+	</div>
+	</div>
+
+	<div class="form-group">
+	<div class="col-sm-6">
+	<label for="noroom">Number Of Rooms</label>
+	<input class="form-control" type= "text" name = "noroom" placeholder="Number Of Rooms"><br>
+	</div>
+	</div>
+	
+	<div class="form-group">
+	<div class="col-sm-6">
+	<label for="location">Location</label>
+	<input class="form-control" type= "text" name = "location" placeholder="Location"><br>
+	</div>
+	</div>
+
+
+
+<div class="modal-footer">
+		<button type = "submit" class="btn btn-success" name="btn-submit" >Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+		
+		
+</form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 </div>
 
