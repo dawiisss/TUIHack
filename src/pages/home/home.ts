@@ -3,6 +3,7 @@ import { AuthProvider } from '../../providers/AuthProvider';
 
 import { NavController } from 'ionic-angular';
 import { Login } from '../login/login';
+import { BookHotel } from '../book_hotel/book_hotel'
 
 @Component({
   selector: 'page-home',
@@ -15,6 +16,11 @@ export class Home {
     let info = this.auth.getUserInfo();
     this.username = info.name;
     this.email = info.email;
+  }
+
+  goToBookings(){
+    this.navCtrl.push(BookHotel);
+
   }
 
 
